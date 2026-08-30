@@ -119,7 +119,7 @@ export function SupplyProcess() {
             </span>
             <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-6 leading-[1.1]">
               From Requirement <br />
-              to <span className="font-georgia italic font-normal text-[#dfb277]">Delivery.</span>
+              to <span className="font-georgia font-normal text-[#dfb277]">Delivery.</span>
             </h2>
           </div>
 
@@ -166,7 +166,7 @@ export function SupplyProcess() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className={`flex-shrink-0 w-[290px] sm:w-[330px] lg:w-[360px] aspect-[4/5] min-h-[380px] p-8 sm:p-10 rounded-none flex flex-col justify-between transition-all duration-500 snap-start select-none cursor-pointer relative group ${
+                className={`flex-shrink-0 w-[290px] sm:w-[320px] lg:w-[340px] h-[260px] sm:h-[280px] lg:h-[300px] p-6 sm:p-8 rounded-none flex flex-col justify-between transition-all duration-500 snap-start select-none cursor-pointer relative group ${
                   isActive
                     ? "bg-[#040a16] border border-[#dfb277]/90 shadow-[0_10px_40px_rgba(223,178,119,0.08)]"
                     : "bg-[#030710] border border-white/[0.07] hover:border-white/20 hover:bg-[#040914]"
@@ -175,7 +175,7 @@ export function SupplyProcess() {
                 {/* Top Section: Large Outline Number & Line */}
                 <div className="flex items-start justify-between">
                   <span
-                    className={`font-editorial text-5xl sm:text-6xl font-light tracking-tight transition-colors duration-500 ${
+                    className={`font-editorial text-4xl sm:text-5xl font-light tracking-tight transition-colors duration-500 ${
                       isActive
                         ? "text-[#dfb277]"
                         : "text-[#dfb277]/60 group-hover:text-[#dfb277]"
@@ -197,15 +197,15 @@ export function SupplyProcess() {
                 </div>
 
                 {/* Bottom Section: Title and Description */}
-                <div className="mt-auto pt-8">
+                <div className="mt-auto pt-2">
                   <h3
-                    className={`font-editorial text-2xl sm:text-3xl font-light tracking-tight transition-colors duration-300 ${
+                    className={`font-editorial text-xl sm:text-2xl font-light tracking-tight transition-colors duration-300 ${
                       isActive ? "text-white" : "text-zinc-200 group-hover:text-white"
                     }`}
                   >
                     {stage.title}
                   </h3>
-                  <p className="mt-4 text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
                     {stage.description}
                   </p>
                 </div>

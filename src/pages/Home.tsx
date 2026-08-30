@@ -4,9 +4,12 @@ import { CompanyJourney } from "../components/home/CompanyJourney";
 import { QuoteSection } from "../components/home/QuoteSection";
 import { MarqueeLogos } from "../components/home/MarqueeLogos";
 import { WhatWeDo } from "../components/home/WhatWeDo";
+import { GarmentTextile } from "../components/home/GarmentTextile";
 import { StrategicCapability } from "../components/home/StrategicCapability";
 import { SupplyProcess } from "../components/home/SupplyProcess";
+import { WhyLunarEclipse } from "../components/home/WhyLunarEclipse";
 import { GlobalNetworkMap } from "../components/home/GlobalNetworkMap";
+import { GroupStructure } from "../components/home/GroupStructure";
 import { PageTransition } from "../components/common/PageTransition";
 
 export function Home() {
@@ -25,11 +28,17 @@ export function Home() {
         {/* 3. Executive Quotes & Vision Section */}
         <QuoteSection />
 
+        {/* 3.1. Why Lunar Eclipse (Six Reasons Grid) */}
+        <WhyLunarEclipse />
+
         {/* 3.5. Partner & Market Network Marquee Slider */}
         <MarqueeLogos />
 
         {/* 3.8. What We Do Core Capabilities Grid */}
         <WhatWeDo />
+
+        {/* 3.85. Garment & Textile (Backward Linkage Journey) */}
+        <GarmentTextile />
 
         {/* 3.9. Strategic Capability Section (Defence & Institutional Supply) */}
         <StrategicCapability />
@@ -39,6 +48,9 @@ export function Home() {
 
         {/* 4. Global Reach & Sourcing Network Map */}
         <GlobalNetworkMap />
+
+        {/* 5. The Lunar Eclipse Group (Orbital Group Structure) */}
+        <GroupStructure />
       </main>
     </PageTransition>
   );

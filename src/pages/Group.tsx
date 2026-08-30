@@ -35,7 +35,7 @@ export function Group() {
               Corporate Structure
             </span>
             <h1 className="font-editorial mt-3 text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-              Lunar Eclipse <span className="italic font-georgia text-[#dfb277]">International Group</span>
+              Lunar Eclipse <span className="font-georgia text-[#dfb277]">International Group</span>
             </h1>
             <p className="mt-6 text-base text-zinc-300 leading-relaxed">
               A diversified corporate enterprise integrating every vertical of the international apparel supply chain, raw material sourcing, and specialized manufacturing.

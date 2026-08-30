@@ -35,7 +35,7 @@ export function Products() {
               Product Portfolio
             </span>
             <h1 className="font-editorial mt-3 text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-              Materials & <span className="italic font-georgia text-[#dfb277]">Manufactured Lines</span>
+              Materials & <span className="font-georgia text-[#dfb277]">Manufactured Lines</span>
             </h1>
             <p className="mt-6 text-base text-zinc-300 leading-relaxed">
               Explore our comprehensive range of custom manufacturing capabilities, certified raw materials, bespoke hardware, and precision garment collections.

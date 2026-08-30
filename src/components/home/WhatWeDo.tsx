@@ -65,7 +65,7 @@ export function WhatWeDo() {
               OUR CORE BUSINESS
             </span>
             <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-4 leading-none">
-              What We <span className="font-georgia italic font-normal text-[#dfb277]">Do</span>
+              What We <span className="font-georgia font-normal text-[#dfb277]">Do</span>
             </h2>
           </div>
           

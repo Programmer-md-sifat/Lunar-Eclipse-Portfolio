@@ -13,7 +13,7 @@ export function About() {
               About Lunar Eclipse
             </span>
             <h1 className="font-editorial mt-3 text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-              Global Sourcing Excellence & <span className="italic font-georgia text-[#dfb277]">Industrial Precision</span>
+              Global Sourcing Excellence & <span className="font-georgia text-[#dfb277]">Industrial Precision</span>
             </h1>
             <p className="mt-6 text-base text-zinc-300 leading-relaxed">
               Lunar Eclipse is a premier international apparel buying house, fabric procurement specialist, and multi-tier manufacturing conglomerate. We bridge global fashion brands, government agencies, and institutional buyers with world-class production facilities.

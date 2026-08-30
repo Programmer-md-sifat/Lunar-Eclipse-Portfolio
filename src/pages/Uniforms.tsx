@@ -12,7 +12,7 @@ export function Uniforms() {
               Institutional & Tactical Division
             </span>
             <h1 className="font-editorial mt-3 text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-              Uniforms, Badges & <span className="italic font-georgia text-[#dfb277]">Military Insignia</span>
+              Uniforms, Badges & <span className="font-georgia text-[#dfb277]">Military Insignia</span>
             </h1>
             <p className="mt-6 text-base text-zinc-300 leading-relaxed">
               Specialized manufacturing contracts for government ministries, defense forces, aviation carriers, and corporate security enterprises requiring mil-spec textiles and precision heraldry.

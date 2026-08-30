@@ -45,7 +45,7 @@ export function StrategicCapability() {
               
               <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-6 leading-[1.1]">
                 Defence & <br />
-                <span className="font-georgia italic font-normal text-[#dfb277]">Institutional</span> <br />
+                <span className="font-georgia font-normal text-[#dfb277]">Institutional</span> <br />
                 Uniform Supply
               </h2>
             </div>

@@ -121,7 +121,7 @@ export function HomeAbout() {
             {/* Main Headline Text */}
             <p className="font-editorial text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-light leading-[1.4] tracking-wide text-zinc-200">
               {homeAboutData.mainTextPart1}
-              <span className="font-georgia italic font-normal text-[#dfb277]">
+              <span className="font-georgia font-normal text-[#dfb277]">
                 {homeAboutData.mainTextItalic}
               </span>
               {homeAboutData.mainTextPart2}

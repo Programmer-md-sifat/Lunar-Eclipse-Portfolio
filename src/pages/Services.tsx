@@ -43,7 +43,7 @@ export function Services() {
               Our Business & Solutions
             </span>
             <h1 className="font-editorial mt-3 text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-              End-to-End <span className="italic font-georgia text-[#dfb277]">Apparel Solutions</span>
+              End-to-End <span className="font-georgia text-[#dfb277]">Apparel Solutions</span>
             </h1>
             <p className="mt-6 text-base text-zinc-300 leading-relaxed">
               From fiber selection and bulk weaving to automated cutting, precision stitching, and international shipment clearance — we manage the complete lifecycle of apparel production.

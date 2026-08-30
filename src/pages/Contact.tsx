@@ -29,7 +29,7 @@ export function Contact() {
               Work With Us
             </span>
             <h1 className="font-editorial mt-3 text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-              Initiate Your <span className="italic font-georgia text-[#dfb277]">Inquiry</span>
+              Initiate Your <span className="font-georgia text-[#dfb277]">Inquiry</span>
             </h1>
             <p className="mt-6 text-base text-zinc-300 leading-relaxed">
               Connect directly with our global merchandising, fabric sourcing, and manufacturing leads to receive quotations, material swatches, or schedule factory audits.

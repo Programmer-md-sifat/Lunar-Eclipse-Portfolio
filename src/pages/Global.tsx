@@ -13,7 +13,7 @@ export function Global() {
               International Presence
             </span>
             <h1 className="font-editorial mt-3 text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-              Global Supply & <span className="italic font-georgia text-[#dfb277]">Trade Network</span>
+              Global Supply & <span className="font-georgia text-[#dfb277]">Trade Network</span>
             </h1>
             <p className="mt-6 text-base text-zinc-300 leading-relaxed">
               Operating across strategic textile capitals with integrated logistics lines connecting manufacturers, testing laboratories, and global distribution ports.

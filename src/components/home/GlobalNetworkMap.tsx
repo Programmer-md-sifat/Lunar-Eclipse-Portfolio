@@ -127,7 +127,7 @@ export function GlobalNetworkMap() {
               className="font-editorial text-4xl font-light leading-[1.08] tracking-[-0.02em] text-white sm:text-5xl lg:text-6xl"
             >
               <span>{globalNetworkData.titlePart1}</span>
-              <span className="font-georgia italic font-normal text-[#dfb277]">
+              <span className="font-georgia font-normal text-[#dfb277]">
                 {globalNetworkData.titleItalic}
               </span>
               <span>{globalNetworkData.titlePart2}</span>
