@@ -72,7 +72,30 @@ export function SupplyProcess() {
     if (!el) return;
     el.addEventListener("scroll", checkScroll, { passive: true });
     checkScroll();
-    return () => el.removeEventListener("scroll", checkScroll);
+
+    // Map vertical mouse wheel scroll to horizontal scrolling within the container
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        const isAtLeft = el.scrollLeft <= 5;
+        const isAtRight = el.scrollLeft >= el.scrollWidth - el.clientWidth - 5;
+
+        // Only hijack scroll if we have space to move horizontally so the user is never trapped
+        if ((e.deltaY > 0 && !isAtRight) || (e.deltaY < 0 && !isAtLeft)) {
+          e.preventDefault();
+          el.scrollBy({
+            left: e.deltaY * 0.65,
+            behavior: "smooth",
+          });
+        }
+      }
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      el.removeEventListener("scroll", checkScroll);
+      el.removeEventListener("wheel", handleWheel);
+    };
   }, []);
 
   const scrollToStage = (index: number) => {
