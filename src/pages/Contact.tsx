@@ -23,9 +23,6 @@ export function Contact() {
     company: "",
     email: "",
     phone: "",
-    serviceType: "Global Fabric & Raw Materials Sourcing",
-    estimatedVolume: "1,000 - 10,000 pcs",
-    incoterm: "FOB Port of Exit",
     message: "",
   });
 
@@ -192,40 +189,6 @@ export function Contact() {
                             className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
                             placeholder="+1 (555) 019-2831"
                           />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                            Primary Requirement
-                          </label>
-                          <select
-                            value={formData.serviceType}
-                            onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                            className="w-full border border-white/15 bg-[#070d18] px-4 py-3 text-sm text-white rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
-                          >
-                            <option value="Global Fabric & Raw Materials Sourcing">Global Fabric & Raw Materials Sourcing</option>
-                            <option value="Custom Garment Manufacturing">Custom Garment Manufacturing</option>
-                            <option value="Uniforms, Badges & Defense Tender">Uniforms, Badges & Defense Tender</option>
-                            <option value="Export & Freight Supply Logistics">Export & Freight Supply Logistics</option>
-                            <option value="Corporate Joint Venture / Vendor Reg.">Corporate Joint Venture / Vendor Reg.</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                            Estimated Order Volume
-                          </label>
-                          <select
-                            value={formData.estimatedVolume}
-                            onChange={(e) => setFormData({ ...formData, estimatedVolume: e.target.value })}
-                            className="w-full border border-white/15 bg-[#070d18] px-4 py-3 text-sm text-white rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
-                          >
-                            <option value="Sampling / Prototyping">Sampling / Prototyping (Lab Dips)</option>
-                            <option value="1,000 - 10,000 pcs">1,000 - 10,000 pcs</option>
-                            <option value="10,000 - 50,000 pcs">10,000 - 50,000 pcs</option>
-                            <option value="50,000+ pcs (Enterprise)">50,000+ pcs (Enterprise Program)</option>
-                          </select>
                         </div>
                       </div>
 

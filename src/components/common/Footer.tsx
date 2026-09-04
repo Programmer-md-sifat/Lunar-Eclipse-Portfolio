@@ -1,121 +1,207 @@
 import { Link } from "react-router-dom";
+import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { MoonLogo } from "./MoonLogo";
-import { footerData } from "../../data/common/navigation";
-import { Mail, Phone, MapPin, ArrowUpRight, ShieldCheck } from "lucide-react";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer
       id="main-footer"
-      className="relative border-t border-white/10 bg-[#04060a] text-zinc-400"
+      className="relative bg-[#03060a] text-zinc-400 border-t border-white/[0.06] overflow-hidden"
     >
-      {/* Background subtle glow */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-64 w-[600px] -translate-x-1/2 bg-[#dfb277]/5 blur-[120px]" />
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 pt-16 sm:pt-24 pb-12">
+        {/* Top Header Section: Headline & CTA */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 sm:gap-10">
+          <div className="max-w-2xl">
+            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-[58px] font-light text-white tracking-tight leading-[1.12]">
+              Your Trusted & <span className="font-georgia italic text-[#dfb277]">Loyal</span>
+              <br />
+              Business Partner.
+            </h2>
+          </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8 lg:pt-20">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          {/* Brand Column */}
-          <div className="sm:col-span-2 lg:col-span-4">
-            <MoonLogo size="lg" className="mb-6" />
-            <p className="max-w-sm text-xs leading-relaxed text-zinc-400 sm:text-sm">
-              {footerData.description}
-            </p>
+          <div className="shrink-0 pb-2">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3.5 text-xs sm:text-[13px] font-mono tracking-[0.22em] text-[#dfb277] hover:text-white transition-colors"
+            >
+              <span className="uppercase">START A CONVERSATION</span>
+              <div className="h-8 w-8 sm:h-9 sm:w-9 border border-white/20 flex items-center justify-center group-hover:border-[#dfb277] group-hover:bg-[#dfb277]/10 transition-all">
+                <ArrowUpRight className="h-4 w-4 text-[#dfb277] group-hover:text-white transition-colors" />
+              </div>
+            </Link>
+          </div>
+        </div>
 
-            {/* Certifications Badge row */}
-            <div className="mt-8">
-              <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#dfb277]">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                <span>Global Compliance & Accreditations</span>
-              </div>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {footerData.compliance.map((cert) => (
-                  <span
-                    key={cert}
-                    className="border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10px] tracking-wider text-zinc-400"
-                  >
-                    {cert}
-                  </span>
-                ))}
-              </div>
+        {/* Divider */}
+        <div className="border-t border-white/[0.08] my-12 sm:my-16" />
+
+        {/* Main 5 Columns Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+          {/* Column 1: Brand Info */}
+          <div className="lg:col-span-4 pr-0 lg:pr-6">
+            <div className="mb-6">
+              <MoonLogo size="sm" showText={true} />
             </div>
+
+            <p className="text-xs sm:text-[13px] font-light text-zinc-400 leading-relaxed max-w-sm">
+              Global buying house, trading and supply solutions group — fabrics, trims, logistics, technical support, and specialized uniform, insignia and institutional supply.
+            </p>
           </div>
 
-          {/* Quick Navigation Links */}
-          <div className="lg:col-span-2 lg:col-start-6">
-            <h4 className="font-display-modern mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-white">
-              Navigation
+          {/* Column 2: COMPANY */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10.5px] font-mono font-medium tracking-[0.28em] text-zinc-500 uppercase mb-5">
+              COMPANY
             </h4>
-            <ul className="space-y-3 text-xs">
-              {footerData.quickLinks.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    to={item.href}
-                    className="transition-colors duration-200 hover:text-[#dfb277]"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-3 text-xs sm:text-[13px] font-light">
+              <li>
+                <Link to="/about" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Our Business
+                </Link>
+              </li>
+              <li>
+                <Link to="/global" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Global Presence
+                </Link>
+              </li>
+              <li>
+                <Link to="/group" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Group Entities
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Experience
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Sourcing & Manufacturing Solutions */}
-          <div className="lg:col-span-3">
-            <h4 className="font-display-modern mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-white">
-              Capabilities
+          {/* Column 3: SOLUTIONS */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10.5px] font-mono font-medium tracking-[0.28em] text-zinc-500 uppercase mb-5">
+              SOLUTIONS
             </h4>
-            <ul className="space-y-3 text-xs">
-              {footerData.services.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    to={item.href}
-                    className="group inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-white"
-                  >
-                    <span>{item.label}</span>
-                    <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100 text-[#dfb277]" />
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-3 text-xs sm:text-[13px] font-light">
+              <li>
+                <Link to="/products" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Textile & Garment
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Trading
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Logistics
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors underline decoration-white/40 underline-offset-4">
+                  Technical Support
+                </Link>
+              </li>
+              <li>
+                <Link to="/uniforms" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Government Supply
+                </Link>
+              </li>
+              <li>
+                <Link to="/uniforms" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Defence & Maritime
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Global Presence */}
-          <div className="lg:col-span-3">
-            <h4 className="font-display-modern mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-white">
-              Global Presence
+          {/* Column 4: BUSINESS */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10.5px] font-mono font-medium tracking-[0.28em] text-zinc-500 uppercase mb-5">
+              BUSINESS
             </h4>
-            <div className="space-y-3 text-xs">
-              {footerData.locations.map((loc) => (
-                <div key={loc.city} className="border-b border-white/5 pb-2">
-                  <div className="font-medium text-white">{loc.city}</div>
-                  <div className="text-[11px] text-zinc-500">
-                    {loc.role} • {loc.country}
-                  </div>
-                </div>
-              ))}
+            <ul className="space-y-3 text-xs sm:text-[13px] font-light">
+              <li>
+                <Link to="/products" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Sourcing
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Supply Process
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Clients
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 5: CONTACT */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10.5px] font-mono font-medium tracking-[0.28em] text-zinc-500 uppercase mb-5">
+              CONTACT
+            </h4>
+            <div className="space-y-4 text-xs sm:text-[13px] font-light">
+              <p className="text-zinc-400 leading-relaxed">
+                Base: <span className="text-zinc-200 font-normal">Bangladesh</span>
+              </p>
+              <p className="text-zinc-400 leading-relaxed">
+                Network:{" "}
+                <span className="text-zinc-300">
+                  Bangladesh · Cambodia · China · India · Pakistan · Vietnam
+                </span>
+              </p>
+              <p className="text-zinc-400 leading-relaxed">
+                Inquiries:{" "}
+                <Link
+                  to="/contact"
+                  className="text-[#dfb277] hover:underline font-medium"
+                >
+                  Business Form
+                </Link>
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar with Copyright */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row text-xs text-zinc-500">
-          <p>© {currentYear} Lunar Eclipse International Group. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link to="/contact" className="hover:text-zinc-300">
-              Privacy Policy
-            </Link>
-            <span>•</span>
-            <Link to="/contact" className="hover:text-zinc-300">
-              Terms of Supply
-            </Link>
-            <span>•</span>
-            <Link to="/contact" className="hover:text-zinc-300">
-              Sourcing Inquiries
-            </Link>
+        {/* Bottom Bar with Copyright, Tagline & Back to Top */}
+        <div className="mt-16 sm:mt-20 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] sm:text-[11px] font-mono tracking-[0.2em] text-zinc-500 uppercase">
+          <div>© 2026 LUNAR ECLIPSE INTERNATIONAL GROUP</div>
+          <div className="hidden md:block text-center text-zinc-500">
+            CONNECTING GLOBAL SUPPLY — DELIVERING TRUSTED SOLUTIONS
           </div>
+          <button
+            onClick={scrollToTop}
+            className="group inline-flex items-center gap-2.5 text-zinc-400 hover:text-white transition-colors"
+          >
+            <span>BACK TO TOP</span>
+            <div className="h-6 w-6 border border-white/20 flex items-center justify-center group-hover:border-[#dfb277] group-hover:text-[#dfb277] transition-colors">
+              <ArrowUp className="h-3 w-3" />
+            </div>
+          </button>
         </div>
       </div>
     </footer>

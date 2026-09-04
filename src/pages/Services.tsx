@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PageTransition } from "../components/common/PageTransition";
 import { Link } from "react-router-dom";
 import {
@@ -18,8 +17,6 @@ import {
 import fabricRollsImg from "../assets/images/fabric_rolls_textiles_1788067226249.jpg";
 
 export function Services() {
-  const [activeBuyerType, setActiveBuyerType] = useState<"retail" | "defense" | "corporate">("retail");
-
   const serviceList = [
     {
       number: "01",
@@ -121,25 +118,7 @@ export function Services() {
               </p>
             </div>
 
-            {/* QUICK STATS */}
-            <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-10 border-t border-white/10">
-              <div className="bg-[#030712] border border-white/10 p-5 rounded-xl">
-                <div className="font-editorial text-3xl text-[#dfb277]">6 Units</div>
-                <div className="text-xs font-mono uppercase text-white mt-1">Manufacturing Complexes</div>
-              </div>
-              <div className="bg-[#030712] border border-white/10 p-5 rounded-xl">
-                <div className="font-editorial text-3xl text-[#dfb277]">FOB / DDP</div>
-                <div className="text-xs font-mono uppercase text-white mt-1">Flexible Incoterms</div>
-              </div>
-              <div className="bg-[#030712] border border-white/10 p-5 rounded-xl">
-                <div className="font-editorial text-3xl text-[#dfb277]">24 Hours</div>
-                <div className="text-xs font-mono uppercase text-white mt-1">Merchandising SLA</div>
-              </div>
-              <div className="bg-[#030712] border border-white/10 p-5 rounded-xl">
-                <div className="font-editorial text-3xl text-[#dfb277]">100%</div>
-                <div className="text-xs font-mono uppercase text-white mt-1">Audited Compliance</div>
-              </div>
-            </div>
+            {/* Hero section brief description */}
           </div>
         </section>
 
@@ -235,83 +214,7 @@ export function Services() {
           </div>
         </section>
 
-        {/* BUYER CATEGORY MATRIX */}
-        <section className="py-20 sm:py-28 border-b border-white/[0.06] relative">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-            <div className="max-w-3xl mb-12">
-              <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-                TAILORED ENGAGEMENT MODELS
-              </span>
-              <h2 className="font-editorial text-3xl sm:text-5xl font-light text-white tracking-tight mt-3">
-                Solutions Configured to Your Buyer Profile
-              </h2>
-            </div>
 
-            {/* Matrix Tabs */}
-            <div className="flex gap-3 mb-8">
-              {[
-                { id: "retail", label: "RETAIL FASHION BRANDS" },
-                { id: "defense", label: "DEFENCE & GOVT TENDERS" },
-                { id: "corporate", label: "CORPORATE & WHOLESALE" },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveBuyerType(tab.id as any)}
-                  className={`text-xs font-mono uppercase tracking-widest px-5 py-3 rounded-lg border transition-all ${
-                    activeBuyerType === tab.id
-                      ? "bg-[#dfb277] text-black font-bold border-[#dfb277]"
-                      : "bg-[#030712] text-zinc-400 border-white/10 hover:border-white/30"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Matrix Card Detail */}
-            <div className="bg-[#030712] border border-white/10 p-8 sm:p-10 rounded-2xl">
-              {activeBuyerType === "retail" && (
-                <div className="space-y-4">
-                  <h3 className="font-editorial text-3xl text-[#dfb277] font-light">Global Retail & Fashion Conglomerates</h3>
-                  <p className="text-sm text-zinc-300 font-light leading-relaxed max-w-3xl">
-                    Dedicated merchandising directors handle seasonal collection launches, GOTS organic cotton sourcing, rapid 7-day lab dip turnarounds, and custom brand labeling.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs font-mono text-zinc-400">
-                    <div>MOQ: 500 Pcs / Color</div>
-                    <div>SAMPLING: 7 Days Express</div>
-                    <div>TERMS: FOB / CIF / L/C 90 Days</div>
-                  </div>
-                </div>
-              )}
-              {activeBuyerType === "defense" && (
-                <div className="space-y-4">
-                  <h3 className="font-editorial text-3xl text-[#dfb277] font-light">Government & Defense Procurement</h3>
-                  <p className="text-sm text-zinc-300 font-light leading-relaxed max-w-3xl">
-                    High-security tender team managing confidential NDAs, NIR camouflage textiles, hand-embroidered bullion badges, and mil-spec certified laboratory testing reports.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs font-mono text-zinc-400">
-                    <div>MOQ: 1,000 Sets</div>
-                    <div>COMPLIANCE: Mil-Spec & NIR</div>
-                    <div>TERMS: Government RFP / L/C</div>
-                  </div>
-                </div>
-              )}
-              {activeBuyerType === "corporate" && (
-                <div className="space-y-4">
-                  <h3 className="font-editorial text-3xl text-[#dfb277] font-light">Enterprise & Corporate Workwear</h3>
-                  <p className="text-sm text-zinc-300 font-light leading-relaxed max-w-3xl">
-                    Turnkey uniform programs for aviation carriers, healthcare networks, corporate security, anti-static utility attire, and heavy industrial PPE.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs font-mono text-zinc-400">
-                    <div>MOQ: 1,000 Pcs</div>
-                    <div>SAFETY: EN ISO FR Certified</div>
-                    <div>TERMS: CIF / DDP Direct Port</div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
 
         {/* ENTERPRISE CTA */}
         <section className="py-20 sm:py-24 relative overflow-hidden">
