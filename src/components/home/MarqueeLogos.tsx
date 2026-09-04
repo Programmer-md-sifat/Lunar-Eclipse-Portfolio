@@ -111,7 +111,7 @@ export function MarqueeLogos() {
           GLOBAL PARTNERSHIPS
         </span>
         <h2 className="font-editorial text-3xl sm:text-4xl font-light text-white tracking-tight mt-2.5">
-          Trusted by Elite Global Brands
+          WE ARE PROUD TO BE ASSOCIATED WITH...
         </h2>
       </div>
 

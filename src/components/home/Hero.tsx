@@ -66,15 +66,15 @@ export function Hero() {
                   duration: 3.2,
                   ease: "easeOut",
                 }}
-                className="h-full w-full object-cover object-center filter brightness-[0.38] contrast-[1.12] will-change-transform"
+                className="h-full w-full object-cover object-center filter brightness-[0.62] contrast-[1.05] will-change-transform"
               />
             </motion.div>
           );
         })}
 
         {/* Sophisticated Dark Gradient Overlays for centered presentation & high contrast */}
-        <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#06090e]/85 via-[#06090e]/70 to-[#06090e]" />
-        <div className="absolute inset-0 z-20 bg-[radial-gradient(circle_at_center,_transparent_25%,_rgba(6,9,14,0.9)_100%)]" />
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#06090e]/60 via-[#06090e]/35 to-[#06090e]/85" />
+        <div className="absolute inset-0 z-20 bg-[radial-gradient(circle_at_center,_transparent_25%,_rgba(6,9,14,0.65)_100%)]" />
 
         {/* Eclipse & Astronomical Orbit Ring Watermarks */}
         <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-[580px] w-[580px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.04] opacity-70" />

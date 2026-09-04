@@ -157,7 +157,7 @@ export function ProductsSolutions() {
 
             <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-4 leading-[1.1]">
               Our Products & <br />
-              <span className="font-georgia italic text-[#dfb277]">Supply</span>{" "}
+              <span className="font-georgia text-[#dfb277]">Supply</span>{" "}
               Solutions
             </h2>
           </div>

@@ -1,6 +1,5 @@
 import { homeQuoteData } from "../../data/home/aboutData";
 import { Quote } from "lucide-react";
-import quoteAuthorImg from "../../assets/images/quote_author.jpg";
 
 export function QuoteSection() {
   return (
@@ -69,19 +68,6 @@ export function QuoteSection() {
 
           <div className="mt-0.5 text-[11px] uppercase tracking-[0.2em] text-[#dfb277]/80">
             {homeQuoteData.organization}
-          </div>
-
-          {/* Author Circular Portrait */}
-          <div className="mt-7 flex justify-center">
-            <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full p-[2px] bg-gradient-to-tr from-[#dfb277] via-[#dfb277]/50 to-[#dfb277]/20 shadow-[0_0_30px_rgba(223,178,119,0.2)]">
-              <div className="h-full w-full rounded-full overflow-hidden border-2 border-[#04070c] bg-zinc-900">
-                <img
-                  src={quoteAuthorImg}
-                  alt={homeQuoteData.author}
-                  className="h-full w-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
