@@ -60,7 +60,12 @@ export function Footer() {
             <ul className="space-y-3 text-xs sm:text-[13px] font-light">
               <li>
                 <Link to="/about" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  About Us
+                  Explore Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/team" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Our Team
                 </Link>
               </li>
               <li>
@@ -76,11 +81,6 @@ export function Footer() {
               <li>
                 <Link to="/group" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
                   Group Entities
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Experience
                 </Link>
               </li>
             </ul>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import fabricRollsImg from "../../assets/images/fabric_rolls_textiles_1788067226249.jpg";
+import fabricRollsImg from "../../assets/images/pure_fabric_rolls_textiles_1788780174893.jpg";
 import trimsAccessoriesImg from "../../assets/images/trims_accessories_flatlay_1788067248377.jpg";
 
 interface JourneyStep {

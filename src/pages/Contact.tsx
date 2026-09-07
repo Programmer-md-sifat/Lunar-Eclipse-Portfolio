@@ -1,19 +1,17 @@
 import { useState, type FormEvent } from "react";
 import { PageTransition } from "../components/common/PageTransition";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Send,
   CheckCircle2,
-  Clock,
-  Building2,
-  ShieldCheck,
-  FileCheck2,
-  HelpCircle,
   ChevronDown,
 } from "lucide-react";
-import { footerData } from "../data/common/navigation";
+import {
+  contactHeroData,
+  contactSlaBadges,
+  contactFaqs,
+  contactFormConfig,
+  directContactChannels,
+} from "../data/contactData";
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -31,25 +29,6 @@ export function Contact() {
     setSubmitted(true);
   };
 
-  const faqs = [
-    {
-      q: "What is your standard turnaround time for fabric lab dips and sample prototypes?",
-      a: "Lab dips, shade swatches, and pre-production garment prototypes are dispatched via express international courier within 7 business days of receiving your tech pack or reference swatch.",
-    },
-    {
-      q: "What payment and commercial terms does Lunar Eclipse Group accept?",
-      a: "We support flexible Incoterms including FOB Dhaka/Chittagong, CIF destination port, and DDP direct warehouse delivery. Commercial payment options include Irrevocable L/C at Sight, 90-day Usance L/C, and Wire Transfer (T/T).",
-    },
-    {
-      q: "Can your defence division handle confidential government tenders under NDAs?",
-      a: "Yes. Our institutional division operates isolated production lines for mil-spec uniforms, NIR camouflage textiles, and rank insignia. All tender documentation is managed under strict non-disclosure protocols.",
-    },
-    {
-      q: "Do you supply certified eco-friendly and organic textiles?",
-      a: "All organic cotton and recycled polyester lines carry GOTS (Global Organic Textile Standard) and OEKO-TEX Standard 100 certifications, complete with full supply chain transaction certificates.",
-    },
-  ];
-
   return (
     <PageTransition>
       <div className="w-full bg-[#020509] text-white">
@@ -61,220 +40,198 @@ export function Contact() {
           <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 z-10">
             <div className="max-w-4xl">
               <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-                <span className="opacity-60">05</span>
+                <span className="opacity-60">{contactHeroData.sectionNumber}</span>
                 <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-                GLOBAL MERCHANDISING & INQUIRIES
+                {contactHeroData.badge}
               </span>
 
               <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight mt-5 leading-[1.08]">
-                Initiate Commercial <br />
-                <span className="font-georgia text-[#dfb277]">Inquiry & Tenders</span>
+                {contactHeroData.title} <br />
+                <span className="font-georgia text-[#dfb277]">{contactHeroData.titleHighlight}</span>
               </h1>
 
               <p className="mt-8 text-base sm:text-lg text-zinc-300 font-light leading-relaxed max-w-3xl">
-                Connect directly with our senior merchandising leads, fabric procurement directors, and defense tender specialists for instant cost quotations, factory audits, or material swatches.
+                {contactHeroData.description}
               </p>
             </div>
 
             {/* SLA BADGE BAR */}
             <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-white/10">
-              <div className="flex items-center gap-3 bg-[#030712] border border-white/10 p-4 rounded-xl">
-                <Clock className="h-5 w-5 text-[#dfb277]" />
-                <div>
-                  <div className="text-xs font-mono text-white font-bold uppercase">24-Hour Response SLA</div>
-                  <div className="text-[11px] text-zinc-400">Guaranteed feedback on tech packs</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 bg-[#030712] border border-white/10 p-4 rounded-xl">
-                <ShieldCheck className="h-5 w-5 text-[#dfb277]" />
-                <div>
-                  <div className="text-xs font-mono text-white font-bold uppercase">Confidential NDAs</div>
-                  <div className="text-[11px] text-zinc-400">Secure government tender handling</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 bg-[#030712] border border-white/10 p-4 rounded-xl">
-                <FileCheck2 className="h-5 w-5 text-[#dfb277]" />
-                <div>
-                  <div className="text-xs font-mono text-white font-bold uppercase">7-Day Express Sampling</div>
-                  <div className="text-[11px] text-zinc-400">Rapid lab dips & prototypes</div>
-                </div>
-              </div>
+              {contactSlaBadges.map((badge) => {
+                const Icon = badge.icon;
+                return (
+                  <div key={badge.title} className="flex items-center gap-3 bg-[#030712] border border-white/10 p-4 rounded-xl">
+                    <Icon className="h-5 w-5 text-[#dfb277]" />
+                    <div>
+                      <div className="text-xs font-mono text-white font-bold uppercase">{badge.title}</div>
+                      <div className="text-[11px] text-zinc-400">{badge.detail}</div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* MAIN FORM & DIRECTORY SECTION */}
         <section className="py-20 sm:py-28 border-b border-white/[0.06] relative">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-              
-              {/* Form Column */}
-              <div className="lg:col-span-7">
-                <div className="bg-[#030712] border border-white/10 p-8 sm:p-10 rounded-2xl shadow-2xl">
-                  {submitted ? (
-                    <div className="py-16 text-center animate-in fade-in duration-300">
-                      <div className="h-16 w-16 bg-[#dfb277]/10 border border-[#dfb277] rounded-full flex items-center justify-center mx-auto mb-6">
-                        <CheckCircle2 className="h-8 w-8 text-[#dfb277]" />
-                      </div>
-                      <h3 className="font-editorial text-3xl text-white font-light mb-2">Inquiry Successfully Registered</h3>
-                      <p className="text-sm text-zinc-300 font-light max-w-md mx-auto mb-8 leading-relaxed">
-                        Thank you for contacting Lunar Eclipse International Group. A senior Merchandising Director has been assigned to your request and will follow up within 24 hours.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setSubmitted(false)}
-                        className="bg-[#dfb277] text-black px-6 py-3 text-xs font-mono font-bold tracking-widest uppercase rounded-lg hover:bg-white transition-colors"
-                      >
-                        SUBMIT ANOTHER INQUIRY
-                      </button>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="border-b border-white/10 pb-4 mb-6">
-                        <h2 className="font-editorial text-2xl text-white font-light">Commercial Specification Form</h2>
-                        <p className="text-xs text-zinc-400 font-light mt-1">Fields marked with an asterisk (*) are required for quotation.</p>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                            Full Name *
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.fullName}
-                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                            className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
-                            placeholder="e.g., Alexander Vance"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                            Company / Brand Name *
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.company}
-                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                            className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
-                            placeholder="e.g., Vanguard Retail Group"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                            Work Email Address *
-                          </label>
-                          <input
-                            type="email"
-                            required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
-                            placeholder="alexander@vanguardretail.com"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                            Direct Phone / WhatsApp
-                          </label>
-                          <input
-                            type="tel"
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
-                            placeholder="+1 (555) 019-2831"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                          Tech Pack Details & Target Specifications
-                        </label>
-                        <textarea
-                          rows={4}
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-lg focus:border-[#dfb277] focus:outline-none transition-colors"
-                          placeholder="Please specify target fabric GSM, fiber compositions, target FOB price, delivery timelines, or tender requirements..."
-                        />
-                      </div>
-
-                      <button
-                        type="submit"
-                        className="w-full inline-flex items-center justify-center gap-3 bg-[#dfb277] text-black py-4 text-xs font-mono font-bold tracking-[0.2em] uppercase rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(223,178,119,0.3)]"
-                      >
-                        <span>SUBMIT COMMERCIAL SPECIFICATION</span>
-                        <Send className="h-4 w-4" />
-                      </button>
-                    </form>
-                  )}
+          <div className="mx-auto max-w-4xl px-6 sm:px-8">
+            
+            {/* Centered Form Card */}
+            <div className="bg-[#030712] border border-white/10 p-8 sm:p-12 rounded-3xl shadow-2xl relative">
+              {submitted ? (
+                <div className="py-16 text-center animate-in fade-in duration-300">
+                  <div className="h-16 w-16 bg-[#dfb277]/10 border border-[#dfb277] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="h-8 w-8 text-[#dfb277]" />
+                  </div>
+                  <h3 className="font-editorial text-3xl text-white font-light mb-2">{contactFormConfig.successTitle}</h3>
+                  <p className="text-sm text-zinc-300 font-light max-w-md mx-auto mb-8 leading-relaxed">
+                    {contactFormConfig.successMessage}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setSubmitted(false)}
+                    className="bg-[#dfb277] text-black px-6 py-3 text-xs font-mono font-bold tracking-widest uppercase rounded-lg hover:bg-white transition-colors"
+                  >
+                    SUBMIT ANOTHER INQUIRY
+                  </button>
                 </div>
-              </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="border-b border-white/10 pb-5 mb-8 text-center">
+                    <span className="inline-block text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase mb-2">
+                      COMMERCIAL SPECIFICATION
+                    </span>
+                    <h2 className="font-editorial text-2xl sm:text-3xl text-white font-light">{contactFormConfig.title}</h2>
+                    <p className="text-xs sm:text-sm text-zinc-400 font-light mt-1.5">{contactFormConfig.subtitle}</p>
+                  </div>
 
-              {/* Directory Column */}
-              <div className="lg:col-span-5 space-y-6">
-                
-                {/* Global HQ Directory Card */}
-                <div className="bg-[#030712] border border-white/10 p-8 rounded-2xl">
-                  <h3 className="font-editorial text-2xl text-white font-light mb-6 flex items-center gap-2">
-                    <Building2 className="h-5 w-5 text-[#dfb277]" />
-                    <span>Global Headquarters</span>
-                  </h3>
-
-                  <div className="space-y-5 text-sm">
-                    <div className="flex items-start gap-3.5">
-                      <Mail className="h-5 w-5 text-[#dfb277] shrink-0 mt-0.5" />
-                      <div>
-                        <div className="text-[10px] font-mono uppercase text-zinc-500 tracking-wider">Commercial Email</div>
-                        <div className="text-white font-medium">{footerData.contactInfo.email}</div>
-                      </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-xl focus:border-[#dfb277] focus:outline-none transition-colors"
+                        placeholder="e.g., Md. Sifat"
+                      />
                     </div>
-                    <div className="flex items-start gap-3.5">
-                      <Phone className="h-5 w-5 text-[#dfb277] shrink-0 mt-0.5" />
-                      <div>
-                        <div className="text-[10px] font-mono uppercase text-zinc-500 tracking-wider">Direct Hotline</div>
-                        <div className="text-white font-medium">{footerData.contactInfo.phone}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3.5">
-                      <MapPin className="h-5 w-5 text-[#dfb277] shrink-0 mt-0.5" />
-                      <div>
-                        <div className="text-[10px] font-mono uppercase text-zinc-500 tracking-wider">Corporate Complex</div>
-                        <div className="text-zinc-300 font-light">{footerData.contactInfo.address}, Dhaka, Bangladesh</div>
-                      </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
+                        Company / Brand Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-xl focus:border-[#dfb277] focus:outline-none transition-colors"
+                        placeholder="e.g., Lunar Group"
+                      />
                     </div>
                   </div>
-                </div>
 
-                {/* Regional Hubs Quick Reference */}
-                <div className="bg-[#030712] border border-white/10 p-8 rounded-2xl">
-                  <h4 className="font-editorial text-xl text-white font-light mb-4">Regional Liaison Offices</h4>
-                  
-                  <div className="space-y-4 text-xs font-mono">
-                    <div className="border-b border-white/5 pb-3 flex justify-between">
-                      <span className="text-white">Hong Kong Hub</span>
-                      <span className="text-[#dfb277]">hk@lunareclipsegroup.com</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
+                        Work Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-xl focus:border-[#dfb277] focus:outline-none transition-colors"
+                        placeholder="contact@lunargroup.com"
+                      />
                     </div>
-                    <div className="border-b border-white/5 pb-3 flex justify-between">
-                      <span className="text-white">London Office</span>
-                      <span className="text-[#dfb277]">uk@lunareclipsegroup.com</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-white">New York Hub</span>
-                      <span className="text-[#dfb277]">usa@lunareclipsegroup.com</span>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
+                        Direct Phone / WhatsApp
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-xl focus:border-[#dfb277] focus:outline-none transition-colors"
+                        placeholder="+88 (017) 586-2728"
+                      />
                     </div>
                   </div>
-                </div>
 
-              </div>
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
+                      Tech Pack Details & Target Specifications
+                    </label>
+                    <textarea
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full border border-white/15 bg-black/50 px-4 py-3 text-sm text-white placeholder-zinc-600 rounded-xl focus:border-[#dfb277] focus:outline-none transition-colors"
+                      placeholder="Please specify target fabric GSM, fiber compositions, target FOB price, delivery timelines, or tender requirements..."
+                    />
+                  </div>
 
+                  <button
+                    type="submit"
+                    className="w-full inline-flex items-center justify-center gap-3 bg-[#dfb277] text-black py-4 text-xs font-mono font-bold tracking-[0.2em] uppercase rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(223,178,119,0.3)] cursor-pointer"
+                  >
+                    <span>SUBMIT COMMERCIAL SPECIFICATION</span>
+                    <Send className="h-4 w-4" />
+                  </button>
+                </form>
+              )}
             </div>
+
+            {/* Direct Contact Channels Below Centered Form */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+              {directContactChannels.map((channel) => {
+                const Icon = channel.icon;
+                return (
+                  <div
+                    key={channel.label}
+                    className="bg-[#030712] border border-white/10 p-6 sm:p-7 rounded-2xl flex flex-col justify-between hover:border-[#dfb277]/40 transition-all duration-300 group h-full shadow-lg"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="h-11 w-11 rounded-xl bg-[#dfb277]/10 border border-[#dfb277]/25 flex items-center justify-center text-[#dfb277] group-hover:bg-[#dfb277] group-hover:text-black transition-all">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 bg-white/5 border border-white/5 px-2.5 py-1 rounded">
+                          {channel.badge}
+                        </span>
+                      </div>
+
+                      <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#dfb277] mb-2">
+                        {channel.label}
+                      </div>
+
+                      {channel.href ? (
+                        <a
+                          href={channel.href}
+                          className="text-white font-medium text-sm sm:text-base hover:text-[#dfb277] transition-colors break-words block leading-snug"
+                        >
+                          {channel.value}
+                        </a>
+                      ) : (
+                        <div className="text-white font-medium text-sm sm:text-base leading-snug">
+                          {channel.value}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-6 pt-3.5 border-t border-white/5 text-[11px] text-zinc-400 font-light flex items-center justify-between">
+                      <span>{channel.subtext}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
         </section>
 
@@ -291,7 +248,7 @@ export function Contact() {
             </div>
 
             <div className="space-y-4">
-              {faqs.map((faq, i) => {
+              {contactFaqs.map((faq, i) => {
                 const isOpen = openFaq === i;
                 return (
                   <div

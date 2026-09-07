@@ -1,12 +1,34 @@
+export interface SubNavItem {
+  label: string;
+  href: string;
+  description?: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
   highlight?: boolean;
+  children?: SubNavItem[];
 }
 
 export const navigationItems: NavItem[] = [
   { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "/about" },
+  {
+    label: "ABOUT",
+    href: "/about",
+    children: [
+      {
+        label: "EXPLORE US",
+        href: "/about",
+        description: "Company heritage, mission, strategic pillars & accreditations",
+      },
+      {
+        label: "OUR TEAM",
+        href: "/team",
+        description: "Executive directors, technical specialists & department leads",
+      },
+    ],
+  },
   { label: "PRODUCTS", href: "/products" },
   { label: "SERVICE", href: "/services" },
   { label: "GROUP", href: "/group" },

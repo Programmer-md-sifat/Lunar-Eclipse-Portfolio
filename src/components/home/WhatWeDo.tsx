@@ -1,51 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-
-interface Capability {
-  number: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-}
-
-const CAPABILITIES: Capability[] = [
-  {
-    number: "01",
-    title: "Thread's for Sewing & Decoration",
-    description: "Premium selection of high-tenacity sewing threads, embroidery threads, and decorative yarns designed for high-speed industrial manufacturing.",
-    imageUrl: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    number: "02",
-    title: "Defence Uniform & Accessories",
-    description: "Heavy-duty, tactical apparel fabrics, camouflage textiles, and rugged gear trims engineered to withstand rigorous military and security performance criteria.",
-    imageUrl: "https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    number: "03",
-    title: "Mens Lingerie",
-    description: "Ultra-breathable, ergonomic intimate apparel, briefs, and sophisticated loungewear fabricated from premium combed cotton, fine modal, and soft silk blends.",
-    imageUrl: "https://images.unsplash.com/photo-1582845512747-e426d1fc95f0?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    number: "04",
-    title: "Womens Lingerie",
-    description: "Delicate, elegant sleepwear, lace intimates, and premium bodywear featuring soft French lace, fine satins, and advanced seamless comfort fit technologies.",
-    imageUrl: "https://images.unsplash.com/photo-1616150638538-ffb0679a3fc4?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    number: "05",
-    title: "Fabric's of Any Density & Composition",
-    description: "Sourcing and supply of high-grade woven, knit, and technical textiles of varied weights, structures, and fiber compositions to match precise brand nominations.",
-    imageUrl: "https://images.unsplash.com/photo-1584184924103-e310d9dc82fc?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    number: "06",
-    title: "Badges & Patches",
-    description: "Exquisite embroidered, woven, silicone, and leather patches and badges that elevate branding with precise dimensional craftsmanship.",
-    imageUrl: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80",
-  },
-];
+import { Link } from "react-router-dom";
+import { capabilitiesList, whatWeDoHeaderData } from "../../data";
 
 export function WhatWeDo() {
   return (
@@ -60,26 +16,25 @@ export function WhatWeDo() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
           <div className="flex flex-col">
             <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-              <span className="opacity-60">02</span>
+              <span className="opacity-60">{whatWeDoHeaderData.sectionNumber}</span>
               <span className="h-[1px] w-4 bg-[#dfb277]/60" />
-              OUR CORE BUSINESS
+              {whatWeDoHeaderData.tag}
             </span>
             <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-4 leading-none">
-              What We <span className="font-georgia font-normal text-[#dfb277]">Do</span>
+              {whatWeDoHeaderData.titleLine1} <span className="font-georgia font-normal text-[#dfb277]">{whatWeDoHeaderData.titleHighlight}</span>
             </h2>
           </div>
           
           <div className="max-w-md md:text-right">
             <p className="text-sm sm:text-base text-zinc-400 font-light leading-relaxed">
-              Six interconnected capabilities — one integrated supply operation serving the garment industry and beyond.
+              {whatWeDoHeaderData.subtitle}
             </p>
           </div>
         </div>
 
         {/* Outer grid boundary box matching reference image precisely */}
         <div className="border border-white/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y divide-x divide-white/10 overflow-hidden rounded-sm">
-          {CAPABILITIES.map((cap, index) => {
-            // Need to adjust standard CSS grid border-collapse so we don't get double borders
+          {capabilitiesList.map((cap, index) => {
             return (
               <motion.div
                 key={cap.number}
@@ -87,7 +42,7 @@ export function WhatWeDo() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                className="group relative min-h-[380px] sm:min-h-[420px] p-8 flex flex-col justify-between overflow-hidden cursor-pointer"
+                className="group relative min-h-[380px] sm:min-h-[420px] p-8 flex flex-col justify-between overflow-hidden"
               >
                 {/* Background Image with Dark Vignette Overlay */}
                 <div className="absolute inset-0 z-0">
@@ -108,9 +63,13 @@ export function WhatWeDo() {
                   </span>
                   
                   {/* Hover Accent Action Box */}
-                  <div className="h-10 w-10 bg-[#dfb277] text-[#04070c] flex items-center justify-center opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 rounded-[2px] shadow-lg">
+                  <Link
+                    to="/products"
+                    aria-label={`Explore ${cap.title}`}
+                    className="h-10 w-10 bg-[#dfb277] text-[#04070c] flex items-center justify-center opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 rounded-[2px] shadow-lg hover:bg-white"
+                  >
                     <ArrowUpRight className="h-5 w-5" />
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Card Content - Bottom Section */}
@@ -137,3 +96,4 @@ export function WhatWeDo() {
     </section>
   );
 }
+

@@ -4,7 +4,6 @@ import { CompanyJourney } from "../components/home/CompanyJourney";
 import { QuoteSection } from "../components/home/QuoteSection";
 import { MarqueeLogos } from "../components/home/MarqueeLogos";
 import { WhatWeDo } from "../components/home/WhatWeDo";
-import { ProductsSolutions } from "../components/home/ProductsSolutions";
 import { GarmentTextile } from "../components/home/GarmentTextile";
 import { StrategicCapability } from "../components/home/StrategicCapability";
 import { SupplyProcess } from "../components/home/SupplyProcess";
@@ -37,9 +36,6 @@ export function Home() {
 
         {/* 3.8. What We Do Core Capabilities Grid */}
         <WhatWeDo />
-
-        {/* 3.82. Our Products & Supply Solutions */}
-        <ProductsSolutions />
 
         {/* 3.85. Garment & Textile (Backward Linkage Journey) */}
         <GarmentTextile />
