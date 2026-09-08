@@ -31,7 +31,7 @@ export const navigationItems: NavItem[] = [
   },
   { label: "PRODUCTS", href: "/products" },
   { label: "SERVICE", href: "/services" },
-  { label: "GROUP", href: "/group" },
+  { label: "CLIENTS", href: "/clients" },
   { label: "CONTACT", href: "/contact" },
 ];
 
@@ -50,7 +50,7 @@ export const footerData = {
     { label: "About Us", href: "/about" },
     { label: "Services & Sourcing", href: "/services" },
     { label: "Products & Materials", href: "/products" },
-    { label: "Corporate Group", href: "/group" },
+    { label: "Global Clients", href: "/clients" },
     { label: "Contact & Inquiries", href: "/contact" },
   ],
   services: [

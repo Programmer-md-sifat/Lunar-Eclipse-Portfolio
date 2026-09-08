@@ -53,7 +53,7 @@ function LogoImage({ id, name }: LogoItem) {
       title={`${name} Client Partnership`}
       referrerPolicy="no-referrer"
       onError={() => setHasError(true)}
-      className="max-w-[75%] max-h-[60%] object-contain filter grayscale brightness-100 opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+      className="max-w-[75%] max-h-[60%] object-contain opacity-100 group-hover:scale-105 transition-all duration-300"
     />
   );
 }

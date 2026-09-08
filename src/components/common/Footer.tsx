@@ -79,8 +79,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/group" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Group Entities
+                <Link to="/clients" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Global Clients
                 </Link>
               </li>
             </ul>

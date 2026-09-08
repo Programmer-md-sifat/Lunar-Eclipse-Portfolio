@@ -1,5 +1,6 @@
 export * from "./aboutData";
 export * from "./teamData";
+export * from "./clientsData";
 export * from "./productsData";
 export * from "./servicesData";
 export * from "./contactData";

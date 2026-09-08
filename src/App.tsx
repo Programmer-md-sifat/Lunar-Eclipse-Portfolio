@@ -10,7 +10,7 @@ import { Services } from "./pages/Services";
 import { Global } from "./pages/Global";
 import { Uniforms } from "./pages/Uniforms";
 import { Products } from "./pages/Products";
-import { Group } from "./pages/Group";
+import { Clients } from "./pages/Clients";
 import { Contact } from "./pages/Contact";
 
 function AnimatedRoutes() {
@@ -28,7 +28,9 @@ function AnimatedRoutes() {
         <Route path="/global" element={<Global />} />
         <Route path="/uniforms" element={<Uniforms />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/group" element={<Group />} />
+        <Route path="/clients" element={<Clients />} />
+        <Route path="/client" element={<Clients />} />
+        <Route path="/group" element={<Clients />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Home />} />
       </Routes>
