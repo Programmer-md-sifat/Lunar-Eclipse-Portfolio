@@ -27,6 +27,16 @@ export const navigationItems: NavItem[] = [
         href: "/team",
         description: "Executive directors, technical specialists & department leads",
       },
+      {
+        label: "MESSAGE FROM MD",
+        href: "/message-from-md",
+        description: "Managing Director's vision, industrial heritage & ethical manufacturing",
+      },
+      {
+        label: "MESSAGE FROM CEO",
+        href: "/message-from-ceo",
+        description: "CEO's strategic roadmap, digital supply chain & global agility",
+      },
     ],
   },
   { label: "PRODUCTS", href: "/products" },

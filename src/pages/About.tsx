@@ -5,11 +5,15 @@ import {
   CheckCircle2,
   ArrowRight,
   Building2,
+  Quote,
+  Sparkles,
+  Award,
 } from "lucide-react";
 import fabricRollsImg from "../assets/images/pure_fabric_rolls_textiles_1788780174893.jpg";
 import {
   aboutHeroData,
   aboutMetrics,
+  executiveMessages,
   aboutPhilosophyData,
   aboutPillars,
   aboutMilestones,
@@ -59,8 +63,197 @@ export function About() {
           </div>
         </section>
 
+        {/* DUAL EXECUTIVE KEYNOTE MESSAGES (MANAGING DIRECTOR & CEO) */}
+        <section className="py-20 sm:py-28 border-b border-white/[0.06] bg-[#03060d] relative overflow-hidden">
+          {/* Subtle Ambient Background Lighting */}
+          <div className="pointer-events-none absolute left-1/4 top-1/2 -translate-y-1/2 h-[450px] w-[450px] rounded-full bg-[#dfb277]/[0.025] blur-[150px]" />
+          <div className="pointer-events-none absolute right-1/4 top-1/2 -translate-y-1/2 h-[450px] w-[450px] rounded-full bg-blue-600/[0.02] blur-[150px]" />
+
+          <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 z-10">
+            {/* Section Header */}
+            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+              <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center justify-center gap-2">
+                <Sparkles className="h-3.5 w-3.5 text-[#dfb277]" />
+                EXECUTIVE DIRECTORATE
+              </span>
+              <h2 className="font-editorial text-3xl sm:text-5xl font-light text-white tracking-tight mt-3">
+                A Message from Our{" "}
+                <span className="font-georgia text-[#dfb277]">Leadership</span>
+              </h2>
+              <p className="mt-4 text-sm sm:text-base text-zinc-400 font-light leading-relaxed max-w-2xl mx-auto">
+                Guiding our global supply ecosystem with industrial precision, generational heritage, and future-ready innovation.
+              </p>
+            </div>
+
+            {/* Split Dual Grid: Managing Director (Left) & CEO (Right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+              
+              {/* LEFT CARD: MANAGING DIRECTOR */}
+              <div className="bg-[#030712] border border-white/10 rounded-3xl p-8 sm:p-10 hover:border-[#dfb277]/40 transition-all duration-500 relative flex flex-col justify-between group shadow-2xl overflow-hidden">
+                {/* Accent Background Glow */}
+                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#dfb277]/[0.04] group-hover:bg-[#dfb277]/[0.08] blur-3xl transition-all duration-700" />
+                <Quote className="absolute right-8 top-8 h-20 w-20 text-white/[0.02] group-hover:text-[#dfb277]/[0.06] transition-colors pointer-events-none" />
+
+                <div>
+                  {/* Executive Header & Badge */}
+                  <div className="flex items-center justify-between gap-4 mb-8">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] font-bold text-[#dfb277] bg-[#dfb277]/10 border border-[#dfb277]/25 px-3.5 py-1.5 rounded-full">
+                      {executiveMessages.managingDirector.badge}
+                    </span>
+                    <span className="text-[11px] font-mono text-zinc-500">
+                      {executiveMessages.managingDirector.experience}
+                    </span>
+                  </div>
+
+                  {/* Portrait & Profile Inset */}
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8 pb-8 border-b border-white/10">
+                    <div className="relative shrink-0">
+                      <div className="h-28 w-28 sm:h-32 sm:w-32 rounded-2xl overflow-hidden border-2 border-[#dfb277]/40 shadow-xl relative bg-zinc-900">
+                        <img
+                          src={executiveMessages.managingDirector.portrait}
+                          alt={executiveMessages.managingDirector.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95 contrast-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/60 via-transparent to-transparent" />
+                      </div>
+                      <div className="absolute -bottom-2.5 -right-2.5 bg-[#dfb277] text-black text-[9px] font-mono font-bold px-2 py-0.5 rounded shadow">
+                        Managing Director
+                      </div>
+                    </div>
+
+                    <div className="text-center sm:text-left">
+                      <h3 className="font-editorial text-2xl sm:text-3xl text-white font-light group-hover:text-[#dfb277] transition-colors">
+                        {executiveMessages.managingDirector.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-[#dfb277] font-mono font-medium tracking-wide mt-1">
+                        {executiveMessages.managingDirector.title}
+                      </p>
+                      <p className="text-xs text-zinc-400 font-light mt-2 flex items-center justify-center sm:justify-start gap-1.5">
+                        <Award className="h-3.5 w-3.5 text-[#dfb277]" />
+                        <span>Dhaka HQ & International Directorate</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Headline Quote */}
+                  <blockquote className="font-editorial text-lg sm:text-xl text-zinc-200 font-light italic leading-snug mb-6 pl-4 border-l-2 border-[#dfb277]">
+                    "{executiveMessages.managingDirector.headlineQuote}"
+                  </blockquote>
+
+                  {/* Message Paragraphs */}
+                  <div className="space-y-4 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+                    {executiveMessages.managingDirector.messageParagraphs.map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Signature Block & Action Link */}
+                <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <span className="font-georgia text-lg text-white font-normal block italic tracking-wider">
+                      {executiveMessages.managingDirector.name}
+                    </span>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mt-0.5">
+                      {executiveMessages.managingDirector.signatureNote}
+                    </span>
+                  </div>
+                  <Link
+                    to="/message-from-md"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#dfb277] hover:text-white uppercase tracking-wider font-bold transition-colors"
+                  >
+                    <span>Read Full Address</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* RIGHT CARD: CHIEF EXECUTIVE OFFICER (CEO) */}
+              <div className="bg-[#030712] border border-white/10 rounded-3xl p-8 sm:p-10 hover:border-[#dfb277]/40 transition-all duration-500 relative flex flex-col justify-between group shadow-2xl overflow-hidden">
+                {/* Accent Background Glow */}
+                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#dfb277]/[0.04] group-hover:bg-[#dfb277]/[0.08] blur-3xl transition-all duration-700" />
+                <Quote className="absolute right-8 top-8 h-20 w-20 text-white/[0.02] group-hover:text-[#dfb277]/[0.06] transition-colors pointer-events-none" />
+
+                <div>
+                  {/* Executive Header & Badge */}
+                  <div className="flex items-center justify-between gap-4 mb-8">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] font-bold text-[#dfb277] bg-[#dfb277]/10 border border-[#dfb277]/25 px-3.5 py-1.5 rounded-full">
+                      {executiveMessages.ceo.badge}
+                    </span>
+                    <span className="text-[11px] font-mono text-zinc-500">
+                      {executiveMessages.ceo.experience}
+                    </span>
+                  </div>
+
+                  {/* Portrait & Profile Inset */}
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8 pb-8 border-b border-white/10">
+                    <div className="relative shrink-0">
+                      <div className="h-28 w-28 sm:h-32 sm:w-32 rounded-2xl overflow-hidden border-2 border-[#dfb277]/40 shadow-xl relative bg-zinc-900">
+                        <img
+                          src={executiveMessages.ceo.portrait}
+                          alt={executiveMessages.ceo.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95 contrast-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/60 via-transparent to-transparent" />
+                      </div>
+                      <div className="absolute -bottom-2.5 -right-2.5 bg-[#dfb277] text-black text-[9px] font-mono font-bold px-2 py-0.5 rounded shadow">
+                        CEO
+                      </div>
+                    </div>
+
+                    <div className="text-center sm:text-left">
+                      <h3 className="font-editorial text-2xl sm:text-3xl text-white font-light group-hover:text-[#dfb277] transition-colors">
+                        {executiveMessages.ceo.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-[#dfb277] font-mono font-medium tracking-wide mt-1">
+                        {executiveMessages.ceo.title}
+                      </p>
+                      <p className="text-xs text-zinc-400 font-light mt-2 flex items-center justify-center sm:justify-start gap-1.5">
+                        <Award className="h-3.5 w-3.5 text-[#dfb277]" />
+                        <span>Hong Kong Hub & Global Operations</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Headline Quote */}
+                  <blockquote className="font-editorial text-lg sm:text-xl text-zinc-200 font-light italic leading-snug mb-6 pl-4 border-l-2 border-[#dfb277]">
+                    "{executiveMessages.ceo.headlineQuote}"
+                  </blockquote>
+
+                  {/* Message Paragraphs */}
+                  <div className="space-y-4 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+                    {executiveMessages.ceo.messageParagraphs.map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Signature Block & Action Link */}
+                <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <span className="font-georgia text-lg text-white font-normal block italic tracking-wider">
+                      {executiveMessages.ceo.name}
+                    </span>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mt-0.5">
+                      {executiveMessages.ceo.signatureNote}
+                    </span>
+                  </div>
+                  <Link
+                    to="/message-from-ceo"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#dfb277] hover:text-white uppercase tracking-wider font-bold transition-colors"
+                  >
+                    <span>Read Full Strategy</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* BRAND OVERVIEW & VISION TAB SECTION */}
-        <section className="py-20 sm:py-28 border-b border-white/[0.06] bg-[#030710] relative">
+        <section className="py-20 sm:py-28 border-b border-white/[0.06] bg-[#020509] relative">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               
@@ -109,7 +302,7 @@ export function About() {
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`text-xs font-mono uppercase tracking-[0.2em] px-4 py-2 rounded-lg transition-all ${
+                      className={`text-xs font-mono uppercase tracking-[0.2em] px-4 py-2 rounded-lg transition-all cursor-pointer ${
                         activeTab === tab
                           ? "bg-[#dfb277] text-black font-bold shadow-[0_0_15px_rgba(223,178,119,0.3)]"
                           : "text-zinc-400 hover:text-white hover:bg-white/5"
@@ -153,10 +346,10 @@ export function About() {
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
-                    to="/group"
+                    to="/clients"
                     className="text-xs font-mono tracking-[0.2em] text-zinc-300 hover:text-[#dfb277] uppercase transition-colors"
                   >
-                    CORPORATE GROUP ↗
+                    OUR CLIENTS ↗
                   </Link>
                 </div>
               </div>
@@ -166,7 +359,7 @@ export function About() {
         </section>
 
         {/* CORE STRATEGIC PILLARS */}
-        <section className="py-20 sm:py-28 border-b border-white/[0.06] relative">
+        <section className="py-20 sm:py-28 border-b border-white/[0.06] bg-[#030710] relative">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
@@ -214,7 +407,7 @@ export function About() {
         </section>
 
         {/* HERITAGE & MILESTONES TIMELINE */}
-        <section className="py-20 sm:py-28 border-b border-white/[0.06] bg-[#030710] relative">
+        <section className="py-20 sm:py-28 border-b border-white/[0.06] bg-[#020509] relative">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
             <div className="max-w-3xl mb-16">
               <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
@@ -243,8 +436,6 @@ export function About() {
             </div>
           </div>
         </section>
-
-
 
         {/* ENTERPRISE CTA */}
         <section className="py-20 sm:py-24 relative overflow-hidden">

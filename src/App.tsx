@@ -6,6 +6,8 @@ import { Footer } from "./components/common/Footer";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Team } from "./pages/Team";
+import { MessageFromMD } from "./pages/MessageFromMD";
+import { MessageFromCEO } from "./pages/MessageFromCEO";
 import { Services } from "./pages/Services";
 import { Global } from "./pages/Global";
 import { Uniforms } from "./pages/Uniforms";
@@ -23,6 +25,10 @@ function AnimatedRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/explore" element={<About />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/message-from-md" element={<MessageFromMD />} />
+        <Route path="/md-message" element={<MessageFromMD />} />
+        <Route path="/message-from-ceo" element={<MessageFromCEO />} />
+        <Route path="/ceo-message" element={<MessageFromCEO />} />
         <Route path="/services" element={<Services />} />
         <Route path="/business" element={<Services />} />
         <Route path="/global" element={<Global />} />

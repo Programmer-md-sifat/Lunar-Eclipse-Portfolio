@@ -69,13 +69,18 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Our Business
+                <Link to="/message-from-md" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Message from MD
                 </Link>
               </li>
               <li>
-                <Link to="/global" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Global Presence
+                <Link to="/message-from-ceo" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Message from CEO
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
+                  Our Business
                 </Link>
               </li>
               <li>
@@ -107,21 +112,6 @@ export function Footer() {
                   Logistics
                 </Link>
               </li>
-              <li>
-                <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors underline decoration-white/40 underline-offset-4">
-                  Technical Support
-                </Link>
-              </li>
-              <li>
-                <Link to="/uniforms" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Government Supply
-                </Link>
-              </li>
-              <li>
-                <Link to="/uniforms" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Defence & Maritime
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -139,16 +129,6 @@ export function Footer() {
               <li>
                 <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
                   Sourcing
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Supply Process
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-zinc-300 hover:text-[#dfb277] transition-colors">
-                  Clients
                 </Link>
               </li>
               <li>
@@ -171,7 +151,7 @@ export function Footer() {
               <p className="text-zinc-400 leading-relaxed">
                 Network:{" "}
                 <span className="text-zinc-300">
-                  Bangladesh · Cambodia · China · India · Pakistan · Vietnam
+                  Bangladesh · Japan · Chaina · Germany
                 </span>
               </p>
               <p className="text-zinc-400 leading-relaxed">

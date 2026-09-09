@@ -34,6 +34,19 @@ export interface AboutLeader {
   image: string;
 }
 
+export interface ExecutiveMessage {
+  designation: string;
+  badge: string;
+  name: string;
+  title: string;
+  experience: string;
+  portrait: string;
+  headlineQuote: string;
+  messageParagraphs: string[];
+  signatureNote: string;
+  accentColor: string;
+}
+
 export interface AboutHeroData {
   sectionNumber: string;
   badge: string;
@@ -195,6 +208,42 @@ export const aboutCertifications: AboutCertification[] = [
     desc: "Worldwide Responsible Accredited Production certification.",
   },
 ];
+
+export const executiveMessages: {
+  managingDirector: ExecutiveMessage;
+  ceo: ExecutiveMessage;
+} = {
+  managingDirector: {
+    designation: "MANAGING DIRECTOR",
+    badge: "MANAGING DIRECTOR'S ADDRESS",
+    name: "Tariqul Islam Chowdhury",
+    title: "Founder & Managing Director",
+    experience: "28+ Years Textile Governance",
+    portrait: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    headlineQuote: "Building enduring bridges between global fashion brands and ethical manufacturing excellence.",
+    messageParagraphs: [
+      "Since our inception, Lunar Eclipse has operated with an unshakeable conviction: that industrial scale and ethical integrity must reinforce one another. We built this enterprise on trust, technical precision, and absolute transparency.",
+      "Our direct backward linkages across certified spinning mills, high-capacity weaving units, and automated manufacturing complexes enable our global partners to scale confidently with zero-defect quality and dependable lead times."
+    ],
+    signatureNote: "Managing Director, Lunar Eclipse Group",
+    accentColor: "#dfb277",
+  },
+  ceo: {
+    designation: "CHIEF EXECUTIVE OFFICER",
+    badge: "CEO'S STRATEGIC VISION",
+    name: "Victoria Lin",
+    title: "Chief Executive Officer (CEO)",
+    experience: "20+ Years Global Apparel Sourcing",
+    portrait: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    headlineQuote: "Pioneering agile sourcing, sustainable innovation, and rapid market velocity for modern retail.",
+    messageParagraphs: [
+      "Today’s international fashion and defense procurement environments demand unmatched speed, verifiable sustainability, and end-to-end digital tracking. We have streamlined every stage of the sourcing lifecycle.",
+      "From rapid 7-day lab-dip approvals and bespoke fabric development to sustainable circular fibers and precision logistics, our client-first methodology ensures our partners stay ahead in competitive global markets."
+    ],
+    signatureNote: "Chief Executive Officer, Lunar Eclipse Group",
+    accentColor: "#dfb277",
+  },
+};
 
 export const aboutLeadership: AboutLeader[] = [
   {
