@@ -149,13 +149,7 @@ export function ProductsSolutions() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
           {/* Left Title */}
           <div>
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-              <span className="opacity-60">07</span>
-              <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-              PRODUCTS & SOLUTIONS
-            </span>
-
-            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-4 leading-[1.1]">
+            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-[1.1]">
               Our Products & <br />
               <span className="font-georgia text-[#dfb277]">Supply</span>{" "}
               Solutions

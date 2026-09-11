@@ -32,9 +32,6 @@ export function Home() {
         {/* 3.1. Why Lunar Eclipse (Six Reasons Grid) */}
         <WhyLunarEclipse />
 
-        {/* 3.5. Partner & Market Network Marquee Slider */}
-        <MarqueeLogos />
-
         {/* 3.8. What We Do Core Capabilities Grid */}
         <WhatWeDo />
 
@@ -55,6 +52,9 @@ export function Home() {
 
         {/* 5. The Lunar Eclipse Group (Orbital Group Structure) */}
         <GroupStructure />
+
+        {/* 6. Partner & Market Network Marquee Slider (Above Footer) */}
+        <MarqueeLogos />
       </main>
     </PageTransition>
   );

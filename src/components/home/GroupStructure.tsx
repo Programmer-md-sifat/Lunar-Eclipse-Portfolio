@@ -116,28 +116,12 @@ export function GroupStructure() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24 lg:mb-28">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2"
-          >
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-              13
-            </span>
-            <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-              GROUP STRUCTURE
-            </span>
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-5 leading-[1.15]"
+            transition={{ duration: 0.6 }}
+            className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-[1.15]"
           >
             The <span className="font-georgia font-normal text-[#dfb277]">Lunar Eclipse</span> Group
           </motion.h2>

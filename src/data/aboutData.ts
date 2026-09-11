@@ -219,7 +219,7 @@ export const executiveMessages: {
     name: "Tariqul Islam Chowdhury",
     title: "Founder & Managing Director",
     experience: "28+ Years Textile Governance",
-    portrait: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    portrait: "https://lh3.googleusercontent.com/d/1qft3H0m5DTC3QGoCZi9kF_X4Cl5Q96rI",
     headlineQuote: "Building enduring bridges between global fashion brands and ethical manufacturing excellence.",
     messageParagraphs: [
       "Since our inception, Lunar Eclipse has operated with an unshakeable conviction: that industrial scale and ethical integrity must reinforce one another. We built this enterprise on trust, technical precision, and absolute transparency.",
@@ -234,7 +234,7 @@ export const executiveMessages: {
     name: "Victoria Lin",
     title: "Chief Executive Officer (CEO)",
     experience: "20+ Years Global Apparel Sourcing",
-    portrait: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    portrait: "https://lh3.googleusercontent.com/d/1mxl-UM4v1oFBPoJUxXwnHgjJYd2j6kXI",
     headlineQuote: "Pioneering agile sourcing, sustainable innovation, and rapid market velocity for modern retail.",
     messageParagraphs: [
       "Today’s international fashion and defense procurement environments demand unmatched speed, verifiable sustainability, and end-to-end digital tracking. We have streamlined every stage of the sourcing lifecycle.",
@@ -252,8 +252,7 @@ export const aboutLeadership: AboutLeader[] = [
     experience: "28+ Years Textile Industry Veteran",
     quote:
       "Our founding commitment remains unchanged: delivering industrial precision without compromising on ethical integrity or material quality.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    image: "https://lh3.googleusercontent.com/d/1qft3H0m5DTC3QGoCZi9kF_X4Cl5Q96rI",
   },
   {
     name: "Victoria Lin",
@@ -261,8 +260,7 @@ export const aboutLeadership: AboutLeader[] = [
     experience: "Based in Hong Kong SAR Hub",
     quote:
       "By linking mill-direct fabric innovation with rapid prototyping, we shorten buyer lead times from months to days.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    image: "https://lh3.googleusercontent.com/d/1mxl-UM4v1oFBPoJUxXwnHgjJYd2j6kXI",
   },
   {
     name: "Arthur Pendelton",

@@ -62,12 +62,7 @@ export function WhyLunarEclipse() {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20">
-          <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-            <span className="opacity-60">09</span>
-            <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-            WHY LUNAR ECLIPSE
-          </span>
-          <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-6 leading-[1.1]">
+          <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-[1.1]">
             Why Work With <span className="font-georgia font-normal text-[#dfb277]">Us?</span>
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 font-light leading-relaxed max-w-xl mt-5">

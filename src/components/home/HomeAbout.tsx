@@ -73,21 +73,10 @@ export function HomeAbout() {
           {/* Left Column */}
           <div className="relative lg:col-span-5 flex flex-col justify-between h-full">
             <div className="relative">
-              {/* Eyebrow Label with Horizontal Line */}
-              <div className="relative z-10 flex items-center gap-4 mb-8">
-                <span className="text-[11px] font-medium tracking-[0.2em] text-zinc-500 font-mono">
-                  {homeAboutData.number}
-                </span>
-                <div className="h-[1px] w-10 bg-[#dfb277]/40" />
-                <span className="text-[11px] font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-                  {homeAboutData.badge}
-                </span>
-              </div>
-
               {/* Main Heading */}
               <h2
                 id="about-section-heading"
-                className="font-editorial relative z-10 mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-light leading-[1.08] tracking-tight text-white"
+                className="font-editorial relative z-10 text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-light leading-[1.08] tracking-tight text-white"
               >
                 {homeAboutData.title}
                 <span className="block font-georgia font-normal text-[#dfb277] mt-1">

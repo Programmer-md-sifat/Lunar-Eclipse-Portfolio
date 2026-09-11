@@ -54,11 +54,7 @@ export function Clients() {
           <div className="pointer-events-none absolute right-0 top-1/2 h-[400px] w-[400px] rounded-full bg-blue-900/[0.03] blur-[160px]" />
 
           <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 z-10 text-center">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-              GLOBAL CLIENT PARTNERSHIPS
-            </span>
-
-            <h1 className="font-editorial text-4xl sm:text-6xl font-light text-white tracking-tight mt-4">
+            <h1 className="font-editorial text-4xl sm:text-6xl font-light text-white tracking-tight">
               We Are Proud to Be{" "}
               <span className="font-georgia text-[#dfb277]">
                 Associated With

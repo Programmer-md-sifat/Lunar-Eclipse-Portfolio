@@ -35,15 +35,9 @@ export function StrategicCapability() {
           {/* Left Column: Sourcing and Capability Details */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             
-            {/* Header / Eyebrow */}
+            {/* Header */}
             <div className="flex flex-col">
-              <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-                <span className="opacity-60">06</span>
-                <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-                STRATEGIC CAPABILITY
-              </span>
-              
-              <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-6 leading-[1.1]">
+              <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-[1.1]">
                 Defence & <br />
                 <span className="font-georgia font-normal text-[#dfb277]">Institutional</span> <br />
                 Uniform Supply

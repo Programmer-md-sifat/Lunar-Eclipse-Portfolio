@@ -36,13 +36,7 @@ export function Uniforms() {
 
           <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 z-10">
             <div className="max-w-4xl">
-              <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-                <span className="opacity-60">06</span>
-                <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-                DEFENCE & INSTITUTIONAL DIVISION
-              </span>
-
-              <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight mt-5 leading-[1.08]">
+              <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.08]">
                 Uniforms, Badges & <br />
                 <span className="font-georgia text-[#dfb277]">Military Insignia</span>
               </h1>

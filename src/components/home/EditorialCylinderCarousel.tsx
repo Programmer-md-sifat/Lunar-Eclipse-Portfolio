@@ -181,11 +181,6 @@ export function EditorialCylinderCarousel() {
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         {/* SECTION HEADER */}
         <div className="mb-10 sm:mb-14 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase mb-3">
-            <span>08 MANUFACTURED LINES</span>
-            <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-            <span>COMMERCIAL PRODUCT SHOWCASE</span>
-          </div>
           <h2 className="font-editorial text-3xl sm:text-5xl font-light text-white tracking-tight leading-[1.1]">
             Our Complete <span className="font-georgia text-[#dfb277]">Product Lines</span>
           </h2>

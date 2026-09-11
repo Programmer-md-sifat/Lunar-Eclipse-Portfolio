@@ -135,12 +135,7 @@ export function SupplyProcess() {
         {/* Header Grid matching uploaded reference */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 sm:mb-20">
           <div className="lg:col-span-8">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-              <span className="opacity-60">08</span>
-              <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-              SUPPLY PROCESS
-            </span>
-            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-6 leading-[1.1]">
+            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-[1.1]">
               From Requirement <br />
               to <span className="font-georgia font-normal text-[#dfb277]">Delivery.</span>
             </h2>

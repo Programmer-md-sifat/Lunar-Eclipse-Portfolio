@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { PageTransition } from "../components/common/PageTransition";
 import { Link } from "react-router-dom";
 import {
@@ -10,6 +11,31 @@ import { executiveMessages } from "../data/aboutData";
 
 export function MessageFromCEO() {
   const ceo = executiveMessages.ceo;
+  const [retryStage, setRetryStage] = useState(0);
+
+  const driveIdMatch = ceo.portrait.match(/\/d\/([a-zA-Z0-9_-]+)/) || ceo.portrait.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  const driveId = driveIdMatch
+    ? driveIdMatch[1]
+    : ceo.portrait.includes("lh3.googleusercontent.com/d/")
+    ? ceo.portrait.split("/d/")[1]
+    : null;
+
+  let currentSrc = ceo.portrait;
+  if (driveId) {
+    if (retryStage === 0) {
+      currentSrc = `https://lh3.googleusercontent.com/d/${driveId}`;
+    } else if (retryStage === 1) {
+      currentSrc = `https://drive.google.com/thumbnail?id=${driveId}&sz=w1000`;
+    }
+  }
+
+  const handleImageError = () => {
+    if (driveId && retryStage === 0) {
+      setRetryStage(1);
+    } else {
+      setRetryStage(2);
+    }
+  };
 
   const ceoStrategicPillars = [
     {
@@ -72,13 +98,26 @@ export function MessageFromCEO() {
 
                     {/* Circular Portrait Photo */}
                     <div className="flex flex-col items-center text-center mb-6">
-                      <div className="h-44 w-44 sm:h-52 sm:w-52 rounded-full overflow-hidden border-2 border-[#dfb277]/40 relative bg-zinc-900 shadow-[0_0_30px_rgba(223,178,119,0.2)] group-hover:border-[#dfb277] group-hover:shadow-[0_0_40px_rgba(223,178,119,0.35)] transition-all duration-500 mb-5">
-                        <img
-                          src={ceo.portrait}
-                          alt={ceo.name}
-                          className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
-                        />
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#030712]/50 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-300" />
+                      <div className="h-44 w-44 sm:h-52 sm:w-52 rounded-full overflow-hidden border-2 border-[#dfb277]/40 relative bg-zinc-900 shadow-[0_0_30px_rgba(223,178,119,0.2)] group-hover:border-[#dfb277] group-hover:shadow-[0_0_40px_rgba(223,178,119,0.35)] transition-all duration-500 mb-5 flex items-center justify-center">
+                        {retryStage < 2 && currentSrc ? (
+                          <img
+                            src={currentSrc}
+                            alt={ceo.name}
+                            referrerPolicy="no-referrer"
+                            onError={handleImageError}
+                            className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full rounded-full bg-gradient-to-br from-[#dfb277]/20 via-[#0a0f18] to-[#030712] flex flex-col items-center justify-center text-[#dfb277] select-none">
+                            <span className="font-editorial text-4xl sm:text-5xl font-light tracking-wider">
+                              VL
+                            </span>
+                            <span className="text-[9px] font-mono tracking-widest text-[#dfb277]/70 uppercase mt-1">
+                              Chief Executive Officer
+                            </span>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#030712]/50 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
                       </div>
 
                       {/* Designation and Name */}

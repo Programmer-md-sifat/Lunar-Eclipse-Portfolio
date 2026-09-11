@@ -107,10 +107,7 @@ export function MarqueeLogos() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#020509] via-transparent to-[#020509] z-20" />
 
       <div className="max-w-7xl mx-auto px-6 mb-10 sm:mb-12 text-center">
-        <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-          GLOBAL PARTNERSHIPS
-        </span>
-        <h2 className="font-editorial text-3xl sm:text-4xl font-light text-white tracking-tight mt-2.5">
+        <h2 className="font-editorial text-3xl sm:text-4xl font-light text-white tracking-tight">
           WE ARE PROUD TO BE ASSOCIATED WITH...
         </h2>
       </div>

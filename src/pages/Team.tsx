@@ -1,9 +1,47 @@
+import { useState } from "react";
 import { PageTransition } from "../components/common/PageTransition";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, CheckCircle2, Award } from "lucide-react";
-import { teamHeroData, teamSections, TeamMember } from "../data/teamData";
+import { teamHeroData, teamSections, TeamMember, formatImageUrl } from "../data/teamData";
 
 function MemberCard({ member }: { member: TeamMember }) {
+  const [retryStage, setRetryStage] = useState(0); // 0: primary lh3, 1: drive thumbnail, 2: monogram fallback
+
+  // Extract Google Drive ID if present
+  const driveIdMatch = member.image.match(/\/d\/([a-zA-Z0-9_-]+)/) || member.image.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  const driveId = driveIdMatch
+    ? driveIdMatch[1]
+    : member.image.includes("lh3.googleusercontent.com/d/")
+    ? member.image.split("/d/")[1]
+    : null;
+
+  let currentSrc = member.image;
+  if (driveId) {
+    if (retryStage === 0) {
+      currentSrc = `https://lh3.googleusercontent.com/d/${driveId}`;
+    } else if (retryStage === 1) {
+      currentSrc = `https://drive.google.com/thumbnail?id=${driveId}&sz=w800`;
+    }
+  }
+
+  const handleImageError = () => {
+    if (driveId && retryStage === 0) {
+      setRetryStage(1);
+    } else {
+      setRetryStage(2);
+    }
+  };
+
+  // Compute initials for fallback
+  const initials = member.name
+    .replace(/^Md\.\s*/i, "")
+    .split(" ")
+    .filter(Boolean)
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
   return (
     <div className="bg-[#030712] border border-white/10 rounded-2xl p-6 sm:p-7 hover:border-[#dfb277]/40 hover:bg-[#040914] transition-all duration-300 group flex flex-col items-center text-center justify-between shadow-xl relative overflow-hidden">
       {/* Subtle top corner ambient glow */}
@@ -11,13 +49,23 @@ function MemberCard({ member }: { member: TeamMember }) {
 
       {/* Circular Portrait Photo */}
       <div className="relative mb-5 sm:mb-6">
-        <div className="h-36 w-36 sm:h-44 sm:w-44 rounded-full overflow-hidden bg-zinc-900 border-2 border-white/15 group-hover:border-[#dfb277] group-hover:shadow-[0_0_25px_rgba(223,178,119,0.25)] transition-all duration-500 relative">
-          <img
-            src={member.image}
-            alt={member.name}
-            className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-700 filter brightness-95 contrast-105"
-          />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#030712]/40 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-300" />
+        <div className="h-36 w-36 sm:h-44 sm:w-44 rounded-full overflow-hidden bg-zinc-900 border-2 border-white/15 group-hover:border-[#dfb277] group-hover:shadow-[0_0_25px_rgba(223,178,119,0.25)] transition-all duration-500 relative flex items-center justify-center">
+          {retryStage < 2 && currentSrc ? (
+            <img
+              src={currentSrc}
+              alt={member.name}
+              referrerPolicy="no-referrer"
+              onError={handleImageError}
+              className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0c1424] via-[#050811] to-[#0c1424] text-[#dfb277] select-none">
+              <span className="font-editorial text-3xl sm:text-4xl tracking-widest font-light">
+                {initials || member.name.slice(0, 2).toUpperCase()}
+              </span>
+            </div>
+          )}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#030712]/40 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
         </div>
       </div>
 
@@ -46,13 +94,7 @@ export function Team() {
 
           <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 z-10 text-center sm:text-left">
             <div className="max-w-4xl">
-              <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center justify-center sm:justify-start gap-2">
-                <span className="opacity-60">{teamHeroData.sectionNumber}</span>
-                <span className="h-[1px] w-6 bg-[#dfb277]/60" />
-                {teamHeroData.badge}
-              </span>
-
-              <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight mt-5 leading-[1.08]">
+              <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.08]">
                 {teamHeroData.title} <br />
                 <span className="font-georgia text-[#dfb277]">{teamHeroData.titleHighlight}</span>
               </h1>
@@ -78,9 +120,6 @@ export function Team() {
                 {/* Section Header */}
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 sm:mb-16 border-b border-white/10 pb-6">
                   <div>
-                    <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase block mb-1">
-                      DIVISION 0{idx + 1}
-                    </span>
                     <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight">
                       {section.heading}
                     </h2>
@@ -139,14 +178,11 @@ export function Team() {
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
             <div className="bg-gradient-to-r from-[#030712] via-[#081020] to-[#030712] border border-[#dfb277]/30 p-10 sm:p-14 rounded-3xl relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="max-w-2xl">
-                <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-                  DIRECT CONSULTATION
-                </span>
-                <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight mt-3">
-                  Connect With Our Leadership Team
+                <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight">
+                  Connect With Our Team
                 </h2>
                 <p className="text-sm text-zinc-300 font-light leading-relaxed mt-4">
-                  Discuss bulk orders, tech pack evaluations, or schedule a formal factory audit directly with our merchandising and technical directors.
+                  Discuss bulk orders, tech pack evaluations, digital solutions, or merchandising inquiries directly with our team.
                 </p>
               </div>
 

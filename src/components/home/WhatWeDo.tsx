@@ -15,12 +15,7 @@ export function WhatWeDo() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
           <div className="flex flex-col">
-            <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#dfb277] uppercase flex items-center gap-2">
-              <span className="opacity-60">{whatWeDoHeaderData.sectionNumber}</span>
-              <span className="h-[1px] w-4 bg-[#dfb277]/60" />
-              {whatWeDoHeaderData.tag}
-            </span>
-            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mt-4 leading-none">
+            <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-none">
               {whatWeDoHeaderData.titleLine1} <span className="font-georgia font-normal text-[#dfb277]">{whatWeDoHeaderData.titleHighlight}</span>
             </h2>
           </div>

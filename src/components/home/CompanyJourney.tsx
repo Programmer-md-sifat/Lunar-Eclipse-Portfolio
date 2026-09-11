@@ -15,11 +15,10 @@ export function CompanyJourney() {
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-20 sm:mb-24">
-          <span className="text-[11px] font-bold tracking-[0.25em] text-[#dfb277] uppercase">
-            COMPANY JOURNEY
-          </span>
-          <div className="mt-4 h-[1px] w-12 bg-[#dfb277]/40" />
+        <div className="flex flex-col items-center text-center mb-16 sm:mb-20">
+          <h2 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white">
+            Company <span className="font-georgia text-[#dfb277]">Journey</span>
+          </h2>
         </div>
 
         {/* Timeline Layout */}
