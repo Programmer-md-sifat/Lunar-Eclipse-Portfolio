@@ -74,8 +74,20 @@ export const directorBodiesTeam: TeamMember[] = [
   },
   {
     name: "Md. Atiqur Rahman",
-    role: "Director",
+    role: "Executive Director",
     image: "",
+    specialization: "Executive Director",
+  },
+  {
+    name: "Md. Kawsar",
+    role: "Executive Director",
+    image: "",
+    specialization: "Executive Director",
+  },
+  {
+    name: "Md. Fardin Ahmed",
+    role: "Cheif Executive Officer",
+    image: "https://lh3.googleusercontent.com/d/1mxl-UM4v1oFBPoJUxXwnHgjJYd2j6kXI",
     specialization: "Executive Director",
   },
 ];

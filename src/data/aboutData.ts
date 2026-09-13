@@ -231,9 +231,9 @@ export const executiveMessages: {
   ceo: {
     designation: "CHIEF EXECUTIVE OFFICER",
     badge: "CEO'S STRATEGIC VISION",
-    name: "Victoria Lin",
+    name: "Md. Fardin Ahmed",
     title: "Chief Executive Officer (CEO)",
-    experience: "20+ Years Global Apparel Sourcing",
+    experience: "7+ Years Global Apparel Sourcing",
     portrait: "https://lh3.googleusercontent.com/d/1mxl-UM4v1oFBPoJUxXwnHgjJYd2j6kXI",
     headlineQuote: "Pioneering agile sourcing, sustainable innovation, and rapid market velocity for modern retail.",
     messageParagraphs: [
