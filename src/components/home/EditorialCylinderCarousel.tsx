@@ -60,7 +60,7 @@ const SHOWCASE_IMAGES: ShowcaseImageItem[] = [
   },
 ];
 
-const AUTO_SLIDE_DELAY = 4000; // ms
+const AUTO_SLIDE_DELAY = 2000; // ms (slides every 2 seconds automatically)
 
 export function EditorialCylinderCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -236,7 +236,7 @@ export function EditorialCylinderCarousel() {
                     opacity: isOffstage ? 0 : opacity,
                   }}
                   transition={{
-                    duration: isOffstage ? 0 : 0.65,
+                    duration: isOffstage ? 0 : 0.5,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   style={{
