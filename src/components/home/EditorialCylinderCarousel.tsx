@@ -54,7 +54,7 @@ const SHOWCASE_IMAGES: ShowcaseImageItem[] = [
   },
   {
     id: "men-lingerie",
-    title: "Men Lingerie",
+    title: "Men Undergarments",
     image: productsList[7]?.image,
     alt: "Men Lingerie — Combed Cotton & Modal Essentials",
   },

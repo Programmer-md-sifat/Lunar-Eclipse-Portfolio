@@ -49,7 +49,7 @@ export const capabilitiesList: Capability[] = [
   },
   {
     number: "04",
-    title: "Men Lingerie",
+    title: "Men Undergarments",
     description: "Ultra-breathable ergonomic intimates, fine combed cotton briefs, and luxury modal loungewear designed for daily performance and durability.",
     imageUrl: menLingerieImg,
   },

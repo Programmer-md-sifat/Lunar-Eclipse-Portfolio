@@ -90,7 +90,7 @@ export const productsList: ProductItem[] = [
   },
   {
     id: "men-lingerie",
-    title: "Men Lingerie",
+    title: "Men Undergarments",
     image: menLingerieImg,
     description:
       "Breathable combed cotton and modal boxer briefs, trunks, and base layers crafted with ergonomic support and elastic waistbands.",
