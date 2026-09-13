@@ -1,11 +1,23 @@
 import { useState } from "react";
 import { PageTransition } from "../components/common/PageTransition";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, CheckCircle2, Award } from "lucide-react";
-import { teamHeroData, teamSections, TeamMember, formatImageUrl } from "../data/teamData";
+import { ArrowRight, User } from "lucide-react";
+import {
+  teamHeroData,
+  teamSections,
+  teamCultureData,
+  teamCtaData,
+  TeamMember,
+} from "../data/teamData";
 
 function MemberCard({ member }: { member: TeamMember }) {
   const [retryStage, setRetryStage] = useState(0); // 0: primary lh3, 1: drive thumbnail, 2: monogram fallback
+
+  const isExecutiveAvatar = Boolean(
+    member.useAvatar ||
+    member.name.toLowerCase().includes("saidur") ||
+    member.name.toLowerCase().includes("saidaur")
+  );
 
   // Extract Google Drive ID if present
   const driveIdMatch = member.image.match(/\/d\/([a-zA-Z0-9_-]+)/) || member.image.match(/[?&]id=([a-zA-Z0-9_-]+)/);
@@ -47,10 +59,22 @@ function MemberCard({ member }: { member: TeamMember }) {
       {/* Subtle top corner ambient glow */}
       <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#dfb277]/[0.02] group-hover:bg-[#dfb277]/[0.06] blur-2xl transition-all duration-500" />
 
-      {/* Circular Portrait Photo */}
+      {/* Circular Portrait Photo / Avatar */}
       <div className="relative mb-5 sm:mb-6">
-        <div className="h-36 w-36 sm:h-44 sm:w-44 rounded-full overflow-hidden bg-zinc-900 border-2 border-white/15 group-hover:border-[#dfb277] group-hover:shadow-[0_0_25px_rgba(223,178,119,0.25)] transition-all duration-500 relative flex items-center justify-center">
-          {retryStage < 2 && currentSrc ? (
+        <div className={`h-36 w-36 sm:h-44 sm:w-44 rounded-full overflow-hidden bg-zinc-900 border-2 ${isExecutiveAvatar ? "border-[#dfb277]/60 shadow-[0_0_25px_rgba(223,178,119,0.2)]" : "border-white/15"} group-hover:border-[#dfb277] group-hover:shadow-[0_0_30px_rgba(223,178,119,0.3)] transition-all duration-500 relative flex items-center justify-center`}>
+          {isExecutiveAvatar ? (
+            <div className="w-full h-full flex items-center justify-center relative bg-gradient-to-b from-[#101826] via-[#080d16] to-[#020409] select-none">
+              {/* Soft ambient center glow */}
+              <div className="absolute w-24 h-24 rounded-full bg-[#dfb277]/10 blur-xl pointer-events-none" />
+
+              {/* Executive Avatar Figure */}
+              <div className="relative z-10 flex flex-col items-center justify-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#dfb277]/25 via-[#dfb277]/10 to-transparent border border-[#dfb277]/40 flex items-center justify-center shadow-[inset_0_0_15px_rgba(223,178,119,0.2)] group-hover:scale-105 transition-transform duration-500">
+                  <User className="w-9 h-9 sm:w-11 sm:h-11 text-[#dfb277]" strokeWidth={1.5} />
+                </div>
+              </div>
+            </div>
+          ) : retryStage < 2 && currentSrc ? (
             <img
               src={currentSrc}
               alt={member.name}
@@ -146,29 +170,18 @@ export function Team() {
         <section className="py-20 sm:py-24 border-t border-b border-white/[0.06] bg-[#020509] relative">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="bg-[#030712] border border-white/10 p-8 rounded-2xl">
-                <Sparkles className="h-6 w-6 text-[#dfb277] mb-4" />
-                <h3 className="font-editorial text-2xl text-white font-light mb-3">Global Mindset, Local Mastery</h3>
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
-                  Our merchandisers and QA directors live where fabrics are woven and garments are crafted, maintaining direct communication lines with buyers across Europe, the US, and Asia.
-                </p>
-              </div>
-
-              <div className="bg-[#030712] border border-white/10 p-8 rounded-2xl">
-                <CheckCircle2 className="h-6 w-6 text-[#dfb277] mb-4" />
-                <h3 className="font-editorial text-2xl text-white font-light mb-3">Continuous Technical Audits</h3>
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
-                  Every senior technician undergoes regular certifications in automated patterning, AQL 2.5 defect minimization, and international workplace safety protocols.
-                </p>
-              </div>
-
-              <div className="bg-[#030712] border border-white/10 p-8 rounded-2xl">
-                <Award className="h-6 w-6 text-[#dfb277] mb-4" />
-                <h3 className="font-editorial text-2xl text-white font-light mb-3">Institutional Accountability</h3>
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
-                  Direct executive-level oversight on all government defence uniforms and major international brand accounts guarantees complete transparency from purchase order to port handover.
-                </p>
-              </div>
+              {teamCultureData.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="bg-[#030712] border border-white/10 p-8 rounded-2xl">
+                    <Icon className="h-6 w-6 text-[#dfb277] mb-4" />
+                    <h3 className="font-editorial text-2xl text-white font-light mb-3">{item.title}</h3>
+                    <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -179,19 +192,19 @@ export function Team() {
             <div className="bg-gradient-to-r from-[#030712] via-[#081020] to-[#030712] border border-[#dfb277]/30 p-10 sm:p-14 rounded-3xl relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="max-w-2xl">
                 <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight">
-                  Connect With Our Team
+                  {teamCtaData.title}
                 </h2>
                 <p className="text-sm text-zinc-300 font-light leading-relaxed mt-4">
-                  Discuss bulk orders, tech pack evaluations, digital solutions, or merchandising inquiries directly with our team.
+                  {teamCtaData.description}
                 </p>
               </div>
 
               <div className="shrink-0">
                 <Link
-                  to="/contact"
+                  to={teamCtaData.buttonLink}
                   className="inline-flex items-center gap-3 bg-[#dfb277] text-black px-8 py-4 text-xs font-mono font-bold tracking-[0.2em] uppercase rounded-xl hover:bg-white transition-all shadow-[0_0_25px_rgba(223,178,119,0.3)]"
                 >
-                  <span>SCHEDULE CONSULTATION</span>
+                  <span>{teamCtaData.buttonText}</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

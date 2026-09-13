@@ -74,12 +74,8 @@ export function MessageFromMD() {
                     {/* Circular Executive Avatar */}
                     <div className="flex flex-col items-center text-center mb-6">
                       <div className="h-44 w-44 sm:h-52 sm:w-52 rounded-full overflow-hidden border-2 border-[#dfb277]/50 relative bg-gradient-to-b from-[#101826] via-[#080d16] to-[#020409] shadow-[0_0_35px_rgba(223,178,119,0.25)] group-hover:border-[#dfb277] group-hover:shadow-[0_0_45px_rgba(223,178,119,0.4)] transition-all duration-500 mb-5 flex items-center justify-center">
-                        {/* Orbital geometry backdrop */}
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                          <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-[#dfb277]/15" />
-                          <div className="w-28 h-28 sm:w-34 sm:h-34 rounded-full border border-[#dfb277]/20" />
-                          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#dfb277]/10 blur-xl" />
-                        </div>
+                        {/* Soft ambient center glow */}
+                        <div className="absolute w-28 h-28 rounded-full bg-[#dfb277]/10 blur-2xl pointer-events-none" />
 
                         {/* Executive Avatar Figure */}
                         <div className="relative z-10 flex flex-col items-center justify-center select-none">
