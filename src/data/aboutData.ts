@@ -216,9 +216,9 @@ export const executiveMessages: {
   managingDirector: {
     designation: "MANAGING DIRECTOR",
     badge: "MANAGING DIRECTOR'S ADDRESS",
-    name: "Tariqul Islam Chowdhury",
+    name: "Md. Saidur Rahman",
     title: "Founder & Managing Director",
-    experience: "28+ Years Textile Governance",
+    experience: "20+ Years Textile Governance",
     portrait: "https://lh3.googleusercontent.com/d/1qft3H0m5DTC3QGoCZi9kF_X4Cl5Q96rI",
     headlineQuote: "Building enduring bridges between global fashion brands and ethical manufacturing excellence.",
     messageParagraphs: [
@@ -247,16 +247,16 @@ export const executiveMessages: {
 
 export const aboutLeadership: AboutLeader[] = [
   {
-    name: "Tariqul Islam Chowdhury",
-    role: "Group Chairman & Managing Director",
-    experience: "28+ Years Textile Industry Veteran",
+    name: "Md. Saidur Rahman",
+    role: "Managing Director",
+    experience: "20+ Years Textile Industry Veteran",
     quote:
       "Our founding commitment remains unchanged: delivering industrial precision without compromising on ethical integrity or material quality.",
     image: "https://lh3.googleusercontent.com/d/1qft3H0m5DTC3QGoCZi9kF_X4Cl5Q96rI",
   },
   {
-    name: "Victoria Lin",
-    role: "Director of East Asia Procurement",
+    name: "Md. Fardin Ahmed",
+    role: "Cheif Executive Officer",
     experience: "Based in Hong Kong SAR Hub",
     quote:
       "By linking mill-direct fabric innovation with rapid prototyping, we shorten buyer lead times from months to days.",
