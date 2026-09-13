@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PageTransition } from "../components/common/PageTransition";
 import { Link } from "react-router-dom";
 import {
@@ -6,36 +5,12 @@ import {
   ShieldCheck,
   Building2,
   ArrowRight,
+  User,
 } from "lucide-react";
 import { executiveMessages } from "../data/aboutData";
 
 export function MessageFromMD() {
   const md = executiveMessages.managingDirector;
-  const [retryStage, setRetryStage] = useState(0);
-
-  const driveIdMatch = md.portrait.match(/\/d\/([a-zA-Z0-9_-]+)/) || md.portrait.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-  const driveId = driveIdMatch
-    ? driveIdMatch[1]
-    : md.portrait.includes("lh3.googleusercontent.com/d/")
-    ? md.portrait.split("/d/")[1]
-    : null;
-
-  let currentSrc = md.portrait;
-  if (driveId) {
-    if (retryStage === 0) {
-      currentSrc = `https://lh3.googleusercontent.com/d/${driveId}`;
-    } else if (retryStage === 1) {
-      currentSrc = `https://drive.google.com/thumbnail?id=${driveId}&sz=w1000`;
-    }
-  }
-
-  const handleImageError = () => {
-    if (driveId && retryStage === 0) {
-      setRetryStage(1);
-    } else {
-      setRetryStage(2);
-    }
-  };
 
   const mdStrategicPillars = [
     {
@@ -96,28 +71,25 @@ export function MessageFromMD() {
                   <div className="bg-[#030712] border border-white/10 rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl group hover:border-[#dfb277]/40 transition-all">
                     <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#dfb277]/[0.05] group-hover:bg-[#dfb277]/[0.1] blur-2xl transition-all" />
 
-                    {/* Circular Portrait Photo */}
+                    {/* Circular Executive Avatar */}
                     <div className="flex flex-col items-center text-center mb-6">
-                      <div className="h-44 w-44 sm:h-52 sm:w-52 rounded-full overflow-hidden border-2 border-[#dfb277]/40 relative bg-zinc-900 shadow-[0_0_30px_rgba(223,178,119,0.2)] group-hover:border-[#dfb277] group-hover:shadow-[0_0_40px_rgba(223,178,119,0.35)] transition-all duration-500 mb-5 flex items-center justify-center">
-                        {retryStage < 2 && currentSrc ? (
-                          <img
-                            src={currentSrc}
-                            alt={md.name}
-                            referrerPolicy="no-referrer"
-                            onError={handleImageError}
-                            className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
-                          />
-                        ) : (
-                          <div className="w-full h-full rounded-full bg-gradient-to-br from-[#dfb277]/20 via-[#0a0f18] to-[#030712] flex flex-col items-center justify-center text-[#dfb277] select-none">
-                            <span className="font-editorial text-4xl sm:text-5xl font-light tracking-wider">
-                              TC
-                            </span>
-                            <span className="text-[9px] font-mono tracking-widest text-[#dfb277]/70 uppercase mt-1">
-                              Managing Director
-                            </span>
+                      <div className="h-44 w-44 sm:h-52 sm:w-52 rounded-full overflow-hidden border-2 border-[#dfb277]/50 relative bg-gradient-to-b from-[#101826] via-[#080d16] to-[#020409] shadow-[0_0_35px_rgba(223,178,119,0.25)] group-hover:border-[#dfb277] group-hover:shadow-[0_0_45px_rgba(223,178,119,0.4)] transition-all duration-500 mb-5 flex items-center justify-center">
+                        {/* Orbital geometry backdrop */}
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-[#dfb277]/15" />
+                          <div className="w-28 h-28 sm:w-34 sm:h-34 rounded-full border border-[#dfb277]/20" />
+                          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#dfb277]/10 blur-xl" />
+                        </div>
+
+                        {/* Executive Avatar Figure */}
+                        <div className="relative z-10 flex flex-col items-center justify-center select-none">
+                          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-[#dfb277]/25 via-[#dfb277]/10 to-transparent border border-[#dfb277]/40 flex items-center justify-center shadow-[inset_0_0_20px_rgba(223,178,119,0.15)] group-hover:scale-105 transition-transform duration-500">
+                            <User className="w-11 h-11 sm:w-13 sm:h-13 text-[#dfb277]" strokeWidth={1.5} />
                           </div>
-                        )}
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#030712]/50 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
+                        </div>
+
+                        {/* Subtle edge vignette */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#030712]/60 via-transparent to-transparent pointer-events-none" />
                       </div>
 
                       {/* Designation and Name */}

@@ -149,12 +149,6 @@ export function Footer() {
                 Base: <span className="text-zinc-200 font-normal">Bangladesh</span>
               </p>
               <p className="text-zinc-400 leading-relaxed">
-                Network:{" "}
-                <span className="text-zinc-300">
-                  Bangladesh · Japan · Chaina · Germany
-                </span>
-              </p>
-              <p className="text-zinc-400 leading-relaxed">
                 Inquiries:{" "}
                 <Link
                   to="/contact"

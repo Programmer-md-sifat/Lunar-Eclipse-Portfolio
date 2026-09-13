@@ -55,7 +55,7 @@ const groupEntities: GroupEntity[] = [
   },
   {
     id: "hong-kong",
-    name: "Lunar Eclipse 360 Degree Inceptions LTD",
+    name: "Lunar Eclipse 360° Inceptions LTD",
     brandName: "Lunar Eclipse For Men",
     location: "HONG KONG SAR",
     description: "Bespoke apparel sourcing, offshore financing & international trade hub.",
