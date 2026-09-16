@@ -2,5 +2,5 @@
   "name": "Lunar Eclipse",
   "description": "Global apparel sourcing, manufacturing, and export-import enterprise delivering premium fabrics, trims, uniforms, and bespoke supply chain solutions.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE"]
 }

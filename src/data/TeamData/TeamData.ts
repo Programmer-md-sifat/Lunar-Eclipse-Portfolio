@@ -103,7 +103,7 @@ export const merchandiserTeam: TeamMember[] = [
   },
   {
     name: "Nazrul",
-    role: "Marchendiser",
+    role: "Quality Controler",
     image: "https://lh3.googleusercontent.com/d/1DPPbhvcXr3ocJQFVSV6K4QUMrao69i0o",
     specialization: "Executive Merchandising Coordination",
   },
@@ -113,9 +113,15 @@ export const merchandiserTeam: TeamMember[] = [
 export const adminAndFinanceTeam: TeamMember[] = [
   {
     name: "Jannat",
+    role: "HR & Accountants",
+    image: "https://lh3.googleusercontent.com/d/1CMmOoZuc2l3kpwsthGYQb9d0qedXRy7W",
+    specialization: "HR & Accountants",
+  },
+  {
+    name: "Jisan Alam",
     role: "Accountants",
     image: "https://lh3.googleusercontent.com/d/1CMmOoZuc2l3kpwsthGYQb9d0qedXRy7W",
-    specialization: "Quality Audits & Buyer Liaison",
+    specialization: "Accountants",
   },
 ];
 
