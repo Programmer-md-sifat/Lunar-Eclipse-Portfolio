@@ -163,7 +163,13 @@ export function Footer() {
 
         {/* Bottom Bar with Copyright, Tagline & Back to Top */}
         <div className="mt-16 sm:mt-20 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] sm:text-[11px] font-mono tracking-[0.2em] text-zinc-500 uppercase">
-          <div>© 2026 LUNAR ECLIPSE INTERNATIONAL GROUP</div>
+          <div className="flex items-center gap-3">
+            <span>© 2026 LUNAR ECLIPSE INTERNATIONAL GROUP</span>
+            <span className="text-zinc-700">|</span>
+            <Link to="/admin" className="hover:text-[#dfb277] transition-colors">
+              ADMIN PORTAL
+            </Link>
+          </div>
           <div className="hidden md:block text-center text-zinc-500">
             CONNECTING GLOBAL SUPPLY — DELIVERING TRUSTED SOLUTIONS
           </div>

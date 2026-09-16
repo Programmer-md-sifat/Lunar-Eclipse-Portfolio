@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { PageTransition } from "../components/common/PageTransition";
 import { Link } from "react-router-dom";
 import { ArrowRight, User } from "lucide-react";
@@ -9,25 +9,33 @@ import {
   teamCtaData,
   TeamMember,
 } from "../data/teamData";
+import { useGetRoleWiseAboutQuery } from "../redux";
+
 
 function MemberCard({ member }: { member: TeamMember }) {
   const [retryStage, setRetryStage] = useState(0); // 0: primary lh3, 1: drive thumbnail, 2: monogram fallback
 
+  const memberName = member.name || "Team Member";
+  const memberImage = typeof member.image === "string" ? member.image.trim() : "";
+
   const isExecutiveAvatar = Boolean(
     member.useAvatar ||
-    member.name.toLowerCase().includes("saidur") ||
-    member.name.toLowerCase().includes("saidaur")
+    memberName.toLowerCase().includes("saidur") ||
+    memberName.toLowerCase().includes("saidaur")
   );
 
-  // Extract Google Drive ID if present
-  const driveIdMatch = member.image.match(/\/d\/([a-zA-Z0-9_-]+)/) || member.image.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-  const driveId = driveIdMatch
-    ? driveIdMatch[1]
-    : member.image.includes("lh3.googleusercontent.com/d/")
-    ? member.image.split("/d/")[1]
+  // Extract Google Drive ID if present safely
+  const driveIdMatch = memberImage
+    ? memberImage.match(/\/d\/([a-zA-Z0-9_-]+)/) || memberImage.match(/[?&]id=([a-zA-Z0-9_-]+)/)
     : null;
 
-  let currentSrc = member.image;
+  const driveId = driveIdMatch
+    ? driveIdMatch[1]
+    : memberImage.includes("lh3.googleusercontent.com/d/")
+    ? memberImage.split("/d/")[1]
+    : null;
+
+  let currentSrc = memberImage;
   if (driveId) {
     if (retryStage === 0) {
       currentSrc = `https://lh3.googleusercontent.com/d/${driveId}`;
@@ -44,8 +52,8 @@ function MemberCard({ member }: { member: TeamMember }) {
     }
   };
 
-  // Compute initials for fallback
-  const initials = member.name
+  // Compute initials for fallback safely
+  const initials = memberName
     .replace(/^Md\.\s*/i, "")
     .split(" ")
     .filter(Boolean)
@@ -77,7 +85,7 @@ function MemberCard({ member }: { member: TeamMember }) {
           ) : retryStage < 2 && currentSrc ? (
             <img
               src={currentSrc}
-              alt={member.name}
+              alt={memberName}
               referrerPolicy="no-referrer"
               onError={handleImageError}
               className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
@@ -85,7 +93,7 @@ function MemberCard({ member }: { member: TeamMember }) {
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0c1424] via-[#050811] to-[#0c1424] text-[#dfb277] select-none">
               <span className="font-editorial text-3xl sm:text-4xl tracking-widest font-light">
-                {initials || member.name.slice(0, 2).toUpperCase()}
+                {initials || "LE"}
               </span>
             </div>
           )}
@@ -96,10 +104,10 @@ function MemberCard({ member }: { member: TeamMember }) {
       {/* Name and Designation */}
       <div className="w-full">
         <h3 className="font-editorial text-lg sm:text-xl text-white font-light group-hover:text-[#dfb277] transition-colors leading-snug mb-1.5">
-          {member.name}
+          {memberName}
         </h3>
         <p className="text-xs text-[#dfb277] font-mono font-medium tracking-wide uppercase">
-          {member.role}
+          {member.role || "Specialist"}
         </p>
       </div>
     </div>
@@ -107,6 +115,59 @@ function MemberCard({ member }: { member: TeamMember }) {
 }
 
 export function Team() {
+  const { data: roleWiseData, isError } = useGetRoleWiseAboutQuery();
+
+  const activeSections = useMemo(() => {
+    if (
+      !isError &&
+      roleWiseData?.data &&
+      Array.isArray(roleWiseData.data) &&
+      roleWiseData.data.length > 0
+    ) {
+      // 1. Filter and sort sections by section.order ascending
+      const validSections = [...roleWiseData.data]
+        .filter((sec) => sec && Array.isArray(sec.members) && sec.members.length > 0)
+        .sort((a, b) => {
+          const orderA = typeof a.order === "number" ? a.order : 999999;
+          const orderB = typeof b.order === "number" ? b.order : 999999;
+          return orderA - orderB;
+        });
+
+      const mapped = validSections.map((sec) => ({
+        id: (sec.type || "department").toLowerCase().replace(/_/g, "-"),
+        heading: sec.title || sec.type,
+        subheading: sec.subtitle || "",
+        // 2. Sort team members within this section strictly by order ascending
+        members: [...(sec.members || [])]
+          .sort((a, b) => {
+            const orderA = typeof a.order === "number" ? a.order : 999999;
+            const orderB = typeof b.order === "number" ? b.order : 999999;
+            if (orderA !== orderB) return orderA - orderB;
+            return (a.name || "").localeCompare(b.name || "");
+          })
+          .map((m) => ({
+            name: m.name || "Team Member",
+            role: m.designation || "Specialist",
+            image: typeof m.image === "string" ? m.image : "",
+            bio: m.bio || "",
+            specialization: m.designation || "",
+            useAvatar: Boolean(
+              !m.image ||
+                (m.name &&
+                  (m.name.toLowerCase().includes("saidur") ||
+                    m.name.toLowerCase().includes("saidaur")))
+            ),
+          })),
+      }));
+
+      if (mapped.length > 0) {
+        return mapped;
+      }
+    }
+    return teamSections;
+  }, [roleWiseData, isError]);
+
+
   return (
     <PageTransition>
       <div className="w-full bg-[#020509] text-white">
@@ -132,12 +193,12 @@ export function Team() {
 
         {/* TEAM SECTIONS BY DEPARTMENT */}
         <div className="bg-[#030710]">
-          {teamSections.map((section, idx) => (
+          {activeSections.map((section, idx) => (
             <section
               key={section.id}
               id={section.id}
               className={`py-16 sm:py-24 relative ${
-                idx !== teamSections.length - 1 ? "border-b border-white/[0.06]" : ""
+                idx !== activeSections.length - 1 ? "border-b border-white/[0.06]" : ""
               }`}
             >
               <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
@@ -157,8 +218,8 @@ export function Team() {
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-                  {section.members.map((member) => (
-                    <MemberCard key={member.name} member={member} />
+                  {section.members.map((member, i) => (
+                    <MemberCard key={member.name + i} member={member} />
                   ))}
                 </div>
               </div>

@@ -14,6 +14,8 @@ import { Uniforms } from "./pages/Uniforms";
 import { Products } from "./pages/Products";
 import { Clients } from "./pages/Clients";
 import { Contact } from "./pages/Contact";
+import { AdminDashboard } from "./pages/admin/AdminDashboard";
+import { LoginPage } from "./pages/LoginPage";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -38,9 +40,35 @@ function AnimatedRoutes() {
         <Route path="/client" element={<Clients />} />
         <Route path="/group" element={<Clients />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin/login" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>
+  );
+}
+
+function AppLayout() {
+  const location = useLocation();
+  const isAuthOrAdmin =
+    location.pathname.startsWith("/admin") ||
+    location.pathname === "/login";
+
+  return (
+    <div className="flex min-h-screen flex-col bg-[#06090e] text-[#e5e7eb] selection:bg-[#dfb277]/30 selection:text-white">
+      {/* Top Navigation (hidden on dedicated admin & login portal) */}
+      {!isAuthOrAdmin && <Navbar />}
+
+      {/* Main Application Views with Route Transitions */}
+      <div className="flex-1">
+        <AnimatedRoutes />
+      </div>
+
+      {/* Global Footer (hidden on dedicated admin & login portal) */}
+      {!isAuthOrAdmin && <Footer />}
+    </div>
   );
 }
 
@@ -48,19 +76,9 @@ export default function App() {
   return (
     <Router>
       <SmoothScroll>
-        <div className="flex min-h-screen flex-col bg-[#06090e] text-[#e5e7eb] selection:bg-[#dfb277]/30 selection:text-white">
-          {/* Top Navigation */}
-          <Navbar />
-
-          {/* Main Application Views with Route Transitions */}
-          <div className="flex-1">
-            <AnimatedRoutes />
-          </div>
-
-          {/* Global Footer */}
-          <Footer />
-        </div>
+        <AppLayout />
       </SmoothScroll>
     </Router>
   );
 }
+

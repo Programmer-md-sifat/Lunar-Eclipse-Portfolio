@@ -172,7 +172,14 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTA Action Button */}
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-5 lg:flex">
+          <Link
+            to="/login"
+            className="text-[11px] font-mono tracking-[0.2em] text-zinc-400 hover:text-[#dfb277] transition-colors flex items-center gap-1.5"
+            title="Executive Portal Login"
+          >
+            <span>PORTAL</span>
+          </Link>
           <Link
             to={headerCta.href}
             id="nav-cta-button"
@@ -295,13 +302,19 @@ export function Navbar() {
               );
             })}
 
-            <div className="pt-3">
+            <div className="pt-3 space-y-2">
               <Link
                 to={headerCta.href}
                 className="flex w-full items-center justify-center gap-2 border border-[#dfb277] bg-[#dfb277]/10 py-3 text-center text-xs font-medium tracking-[0.22em] text-[#dfb277]"
               >
                 <span>{headerCta.label}</span>
                 <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/login"
+                className="flex w-full items-center justify-center gap-2 border border-white/10 bg-white/5 py-2.5 text-center text-[11px] font-mono tracking-[0.2em] text-zinc-400 hover:text-white"
+              >
+                <span>EXECUTIVE PORTAL LOGIN</span>
               </Link>
             </div>
           </div>

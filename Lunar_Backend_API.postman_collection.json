@@ -1,0 +1,822 @@
+{
+  "info": {
+    "_postman_id": "a637df52-3e28-49f9-9be3-b9560f78a291",
+    "name": "Lunar Backend API Collection",
+    "description": "Complete API Collection for Lunar Backend (Express + MongoDB Prisma), including Auth, User, Role-Wise About/Team, Cloudinary Upload, OTP, and Activity modules.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5454",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Server Health",
+      "item": [
+        {
+          "name": "Check Server Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "01. Auth",
+      "item": [
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "if (response.data && response.data.accessToken) {",
+                  "    pm.collectionVariables.set('token', response.data.accessToken);",
+                  "    console.log('Token auto-saved to collection variables:', response.data.accessToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@gmail.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current Logged-in User (Me)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "me"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"oldPassword\": \"123456\",\n  \"newPassword\": \"newPassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/change-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "change-password"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/forgot-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "forgot-password"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Reset OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"otp\": 123456\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/verify-reset-otp",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "verify-reset-otp"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"newPassword\": \"newPassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/reset-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "reset-password"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Google Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idToken\": \"google_id_token_here\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/google",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "google"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "logout"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02. Users",
+      "item": [
+        {
+          "name": "Register / Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\",\n  \"phone\": \"+1234567890\",\n  \"country\": \"United States\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/user",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "user"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/user/my-profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "user", "my-profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/user?page=1&limit=10&search=&role=USER",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "user"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" },
+                { "key": "search", "value": "" },
+                { "key": "role", "value": "USER" },
+                { "key": "userStatus", "value": "ACTIVE" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/user/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "user", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "USER_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile (Me)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Updated\",\n  \"phone\": \"+1987654321\",\n  \"country\": \"Canada\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/user/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "user", "me"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/user/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "user", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "USER_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03. About & Team (Role-Wise)",
+      "item": [
+        {
+          "name": "Get Role-Wise About Sections (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/role-wise",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", "role-wise"]
+            },
+            "description": "Returns all role-wise categories with their members, titles, subtitles, and ordering configured dynamically by admin in the database."
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Team Members (Filtered Flat List)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about?page=1&limit=20&type=&search=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "20" },
+                {
+                  "key": "type",
+                  "value": "",
+                  "description": "Options: DIRECTOR_BODIES, MARCHENDISER_TEAM, ADMIN_AND_FINANCE, CREATIVE_DESIGN_AND_DEVELOPMENT, OTHERS"
+                },
+                { "key": "search", "value": "" },
+                { "key": "isActive", "value": "true" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Team Member By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "MEMBER_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Team Member (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alex Morgan\",\n  \"designation\": \"Senior Product Designer\",\n  \"type\": \"CREATIVE_DESIGN_AND_DEVELOPMENT\",\n  \"order\": 8,\n  \"bio\": \"Experienced digital product designer specialized in interactive UI/UX systems.\",\n  \"email\": \"alex@lunareclipse.com\",\n  \"phone\": \"+123456789\",\n  \"image\": \"https://images.unsplash.com/photo-1534528741775-53994a69daeb\",\n  \"socialLinks\": {\n    \"linkedin\": \"https://linkedin.com/in/alexmorgan\",\n    \"twitter\": \"https://twitter.com/alexmorgan\"\n  },\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Team Member (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"designation\": \"Lead Creative Director\",\n  \"order\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "MEMBER_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Team Member (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "MEMBER_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Section (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"OTHERS\",\n  \"title\": \"Special Advisors & External Consultants\",\n  \"subtitle\": \"Valued strategic advisors empowering our growth trajectory.\",\n  \"order\": 5,\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/section",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", "section"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Sections (Admin / Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/section",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", "section"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Section By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/section/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", "section", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "SECTION_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Section (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Executive Board & Director Bodies\",\n  \"subtitle\": \"Steering global innovation, continuous advancement, and leadership.\",\n  \"order\": 1,\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/section/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", "section", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "SECTION_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Section (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about/section/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "about", "section", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "SECTION_OBJECT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04. Upload (Cloudinary)",
+      "item": [
+        {
+          "name": "Upload Single Image (Cloudinary)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": "Select image file (png, jpg, webp, etc.)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/upload",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "upload"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Multiple Images (Cloudinary)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "images",
+                  "type": "file",
+                  "description": "Select multiple images"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/upload/multiple",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "upload", "multiple"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05. OTP",
+      "item": [
+        {
+          "name": "Send OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/otp/send",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "otp", "send"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"otp\": 123456\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/otp/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "otp", "verify"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "06. Activity Logs",
+      "item": [
+        {
+          "name": "Create Activity Log",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"USER_LOGIN\",\n  \"message\": \"User logged in successfully\",\n  \"meta\": {\n    \"ip\": \"127.0.0.1\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/activity",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "activity"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Activity Logs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/activity?page=1&limit=10&type=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "activity"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" },
+                { "key": "type", "value": "" },
+                { "key": "userId", "value": "" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Project Activity Logs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/activity/project/:projectId?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "activity", "project", ":projectId"],
+              "variable": [
+                {
+                  "key": "projectId",
+                  "value": "PROJECT_OBJECT_ID_HERE"
+                }
+              ],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
